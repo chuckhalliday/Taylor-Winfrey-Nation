@@ -1,14 +1,21 @@
-const express = require('express'),
-        server = express(),
-    fs = require('fs'),
-            orderData = require('./orders')
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const port = 3000
+const db = require('./queries')
 
-server.set('port', process.env.PORT || 3000);
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true,
+  })
+)
 
-server.get('/',(request,response)=>{
-    response.send('Welcome to my first e-commerce site');
-   });
+app.get('/', (req, res) => {
+   res.json({ message: 'Welcome to my Ecommerce app' })
+ })
 
-server.listen(3000, ()=>{
-    console.log('Express server started at port 3000');
-});
+app.get('/users', db.getUsers)
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
