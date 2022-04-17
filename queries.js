@@ -15,6 +15,55 @@ const getUsers = (request, response) => {
   })
 }
 
+const getUserById = (request, response) => {
+  const id = parseInt(request.params.id)
+  pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).json(results.rows)
+  })
+}
+
+const createUser = (request, response) => {
+  const { username, passcode, first_name, last_name, telephone } = request.body
+  pool.query('INSERT INTO users (username, passcode, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
+  [username, passcode, first_name, last_name, telephone], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(201).send(`User added with ID: ${results.id}`)
+  })
+}
+
+const updateUser = (request, response) => {
+  const id = parseInt(request.params.id)
+  const { username, passcode, first_name, last_name, telephone } = request.body
+  pool.query( 'UPDATE users SET username = $1, passcode = $2, first_name = $3, last_name = $4, telephone = $5 WHERE id = $6',
+  [username, passcode, first_name, last_name, telephone, id],
+  (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).send(`User modified with ID: ${id}`)
+  })
+}
+
+const deleteUser = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).send(`User deleted with ID: ${id}`)
+  })
+}
+
 module.exports = {
-  getUsers
+  getUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser
 }
