@@ -6,6 +6,7 @@ const pool = new Pool({
   database: 'ecommerce',
 })
 
+
 //User commands:
 
 //displays all users
@@ -28,10 +29,10 @@ const getUserById = (request, response) => {
   })
 }
 //creates new user
-const createUser = (request, response) => {
-  const { username, passcode, first_name, last_name, telephone } = request.body
-  pool.query('INSERT INTO users (username, passcode, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
-  [username, passcode, first_name, last_name, telephone], (error, results) => {
+const createUser = async (request, response) => {
+  const { username, password, first_name, last_name, telephone } = request.body
+  pool.query('INSERT INTO users (username, password, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
+  [username, password, first_name, last_name, telephone], (error, results) => {
     if (error) {
       throw error
     }
@@ -41,9 +42,9 @@ const createUser = (request, response) => {
 //updates existing user
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)
-  const { username, passcode, first_name, last_name, telephone } = request.body
-  pool.query( 'UPDATE users SET username = $1, passcode = $2, first_name = $3, last_name = $4, telephone = $5 WHERE id = $6',
-  [username, passcode, first_name, last_name, telephone, id],
+  const { username, password, first_name, last_name, telephone } = request.body
+  pool.query( 'UPDATE users SET username = $1, password = $2, first_name = $3, last_name = $4, telephone = $5 WHERE id = $6',
+  [username, password, first_name, last_name, telephone, id],
   (error, results) => {
     if (error) {
       throw error
@@ -121,6 +122,7 @@ const deleteProduct = (request, response) => {
 }
 
 module.exports = {
+  pool,
   getUsers,
   getUserById,
   createUser,
