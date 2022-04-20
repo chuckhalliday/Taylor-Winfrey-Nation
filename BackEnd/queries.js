@@ -1,3 +1,6 @@
+const { append } = require('express/lib/response')
+const { user } = require('pg/lib/defaults')
+
 const Pool = require('pg').Pool
 const pool = new Pool({
   host: 'localhost',
@@ -29,10 +32,12 @@ const getUserById = (request, response) => {
   })
 }
 //creates new user
+
 const createUser = (request, response) => {
   const { username, password, first_name, last_name, telephone } = request.body
+  console.log(request.body)
   pool.query('INSERT INTO users (username, password, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
-  [username, password, first_name, last_name, telephone], (error, results) => {
+  [username, password, first_name, last_name, telephone ], (error, results) => {
     if (error) {
       throw error
     }
