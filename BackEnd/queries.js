@@ -29,7 +29,7 @@ const getUserById = (request, response) => {
   })
 }
 //creates new user
-const createUser = async (request, response) => {
+const createUser = (request, response) => {
   const { username, password, first_name, last_name, telephone } = request.body
   pool.query('INSERT INTO users (username, password, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
   [username, password, first_name, last_name, telephone], (error, results) => {
