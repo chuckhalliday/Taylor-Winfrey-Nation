@@ -34,22 +34,22 @@ const getUserById = (request, response) => {
 //creates new user
 
 const createUser = (request, response) => {
-  const { username, password, first_name, last_name, telephone } = request.body
+  const { username, password, first_name, last_name, email } = request.body
   console.log(request.body)
-  pool.query('INSERT INTO users (username, password, first_name, last_name, telephone) VALUES ($1, $2, $3, $4, $5)',
-  [username, password, first_name, last_name, telephone ], (error, results) => {
+  pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)',
+  [username, password, first_name, last_name, email ], (error, results) => {
     if (error) {
       throw error
     }
-      response.status(201).send(`User added with ID: ${results.id}`)
+      response.status(201).send('user created' + first_name + '  ' + last_name)
   })
 }
 //updates existing user
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)
-  const { username, password, first_name, last_name, telephone } = request.body
-  pool.query( 'UPDATE users SET username = $1, password = $2, first_name = $3, last_name = $4, telephone = $5 WHERE id = $6',
-  [username, password, first_name, last_name, telephone, id],
+  const { username, password, first_name, last_name, email } = request.body
+  pool.query( 'UPDATE users SET username = $1, password = $2, first_name = $3, last_name = $4, email = $5 WHERE id = $6',
+  [username, password, first_name, last_name, email, id],
   (error, results) => {
     if (error) {
       throw error

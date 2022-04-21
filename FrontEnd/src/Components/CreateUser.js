@@ -9,8 +9,8 @@ const InputUser = () => {
   const [errorFirst_name, setErrorFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [errorLast_name, setErrorLast_name] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [errorTelephone, setErrorTelephone] = useState("");
+  const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
 
   const validateSignUp = () => {
     let isValidated = true;
@@ -39,10 +39,10 @@ const InputUser = () => {
     } else {
       setErrorLast_name("")
     }
-    if (telephone === "") {
-      setErrorTelephone("! Please enter phone number")
+    if (email === "") {
+      setErrorEmail("! Please email")
     } else {
-      setErrorTelephone("")
+      setErrorEmail("")
     }
     return isValidated
   }
@@ -54,7 +54,7 @@ const InputUser = () => {
         password: password,
         first_name: first_name,
         last_name: last_name,
-        telephone: telephone
+        email: email
       }
       if (validateSignUp()) {
           await fetch('http://localhost:5000/users', {
@@ -64,16 +64,17 @@ const InputUser = () => {
           },
           body: JSON.stringify(body)
         }).then(function (res) {
-            return res.json();
-          })
-        }
+            alert(username + ' created!')
+            return res
+        })
+      }
     };
 
 
   return (
     <Fragment>
       <h1 className="text-center mt-5">Create User</h1>
-      <form className="mt-5" method="POST" action="https://localhost:5000/users" onSubmit={onSubmitForm}>
+      <form className="mt-5" onSubmit={onSubmitForm}>
         <div className="form-group">
           <span className="label">Username</span>
           <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
@@ -95,9 +96,9 @@ const InputUser = () => {
           <span style={{ color: "red" }}>{errorLast_name}</span><br />
         </div>
         <div className="form-group">
-          <span className="label">Phone Number</span>
-          <input type="text" className="form-control" value={telephone} onChange={e => setTelephone(e.target.value)} />
-          <span style={{ color: "red" }}>{errorTelephone}</span><br />
+          <span className="label">Email</span>
+          <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} />
+          <span style={{ color: "red" }}>{errorEmail}</span><br />
         </div>
         <button className="btn btn-success">Add User</button>
       </form>
