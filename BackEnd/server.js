@@ -8,15 +8,17 @@ const pool = require('./queries');
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+app.use(bodyParser.urlencoded({
+    extended: true,})
 );
+
+//register and login routes
+
+app.use("/auth", require("./routes/jwtAuth"));
 
 app.get('/users', pool.getUsers);
 app.get('/users/:id', pool.getUserById);
-app.post('/users', pool.createUser);
+//app.post('/users', pool.createUser);
 app.put('/users/:id', pool.updateUser);
 app.delete('/users/:id', pool.deleteUser);
 

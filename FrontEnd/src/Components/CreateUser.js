@@ -57,7 +57,7 @@ const InputUser = () => {
         email: email
       }
       if (validateSignUp()) {
-          await fetch('http://localhost:5000/users', {
+          await fetch('http://localhost:5000/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -33,17 +33,18 @@ const getUserById = (request, response) => {
 }
 //creates new user
 
-const createUser = (request, response) => {
-  const { username, password, first_name, last_name, email } = request.body
-  console.log(request.body)
-  pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)',
-  [username, password, first_name, last_name, email ], (error, results) => {
-    if (error) {
-      throw error
-    }
-      response.status(201).send('user created' + first_name + '  ' + last_name)
-  })
-}
+// const createUser = (request, response) => {
+//   const { username, password, first_name, last_name, email } = request.body
+//   console.log(request.body)
+//   pool.query('INSERT INTO users (username, password, first_name, last_name, email) VALUES ($1, $2, $3, $4, $5)',
+//   [username, password, first_name, last_name, email ], (error, results) => {
+//     if (error) {
+//       throw error
+//     }
+//       response.status(201).send('user created' + first_name + '  ' + last_name)
+//   })
+// }
+
 //updates existing user
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)
@@ -130,7 +131,7 @@ module.exports = {
   pool,
   getUsers,
   getUserById,
-  createUser,
+  //createUser,
   updateUser,
   deleteUser,
   getProducts,
