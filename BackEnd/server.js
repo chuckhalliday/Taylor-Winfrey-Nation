@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({
 
 app.use("/auth", require("./routes/jwtAuth"));
 
+//dashboard route
+
+app.use("/dashboard", require("./routes/dashboard"));
+
 app.get('/users', pool.getUsers);
 app.get('/users/:id', pool.getUserById);
 //app.post('/users', pool.createUser);
