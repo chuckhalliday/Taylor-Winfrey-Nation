@@ -1,6 +1,7 @@
 import React, { Fragment, useState} from "react";
+import { Link } from "react-router-dom"
 
-const Login = () => {
+const Login = ({ setAuth }) => {
     const [username, setUsername] = useState("");
     const [errorUsername, setErrorUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -24,10 +25,32 @@ const Login = () => {
         return isValidated
     }
 
+    const onSubmit = async e => {
+        e.preventDefault()
+        if (validateCredentials()) {
+            try {
+                const body = { username, password }
+
+                const response = await fetch('http://localhost:5000/auth/login', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(body)
+                });
+
+                const parseRes = await response.json()
+
+                localStorage.setItem("token", parseRes.token);
+
+                setAuth(true);
+            } catch (err) {
+            console.error(err.message)
+            }
+        }
+    }
     return (
         <Fragment>
-          <h1 className="text-center mt-5">Or... Login</h1>
-          <form className="mt-5">
+          <h1 className="text-center mt-5">Login</h1>
+          <form className="mt-5" onSubmit={onSubmit}>
             <div className="form-group">
               <span className="label">Username</span>
               <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
@@ -40,6 +63,7 @@ const Login = () => {
             </div>
             <button className="btn btn-success">Login</button>
           </form>
+          <Link to="/createuser">Register</Link>
         </Fragment>
       );    
 }

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom"
 
 const InputUser = () => {
   const [username, setUsername] = useState("");
@@ -28,19 +29,19 @@ const InputUser = () => {
       setErrorPassword("")
     }
     if (first_name === "") {
-      setErrorFirst_name("! Please enter first name");
+      setErrorFirst_name("! Please enter First Name");
       isValidated = false
     } else {
       setErrorFirst_name("")
     }
     if (last_name === "") {
-      setErrorLast_name("! Please enter last name");
+      setErrorLast_name("! Please enter Last Name");
       isValidated = false
     } else {
       setErrorLast_name("")
     }
     if (email === "") {
-      setErrorEmail("! Please email")
+      setErrorEmail("! Please enter Email")
     } else {
       setErrorEmail("")
     }
@@ -102,6 +103,7 @@ const InputUser = () => {
         </div>
         <button className="btn btn-success">Add User</button>
       </form>
+      <Link to="/login">Login</Link>
     </Fragment>
   );
 }
