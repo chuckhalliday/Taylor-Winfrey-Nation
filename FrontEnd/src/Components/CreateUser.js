@@ -75,7 +75,7 @@ const InputUser = () => {
   return (
     <Fragment>
       <h1 className="text-center mt-5">Create User</h1>
-      <form className="mt-5" onSubmit={onSubmitForm}>
+      <form className="mt-1" onSubmit={onSubmitForm}>
         <div className="form-group">
           <span className="label">Username</span>
           <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
