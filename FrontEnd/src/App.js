@@ -8,41 +8,42 @@ import InputUser from "./Components/CreateUser";
 import Login from "./Components/Login";
 import Home from "./Components/Home"
 
+
 function App() {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const setAuth = (boolean) => {
-    setIsAuthenticated(boolean);
-  };
-
-  async function isAuth() {
+  const checkAuthenticated = async () => {
     try {
-      const response = await fetch('http://localhost:5000/auth/is-verify', {
-        method: "GET",
-        headers: { token : localStorage.token }
+      const res = await fetch("http://localhost:5000/auth/verify", {
+        method: "POST",
+        headers: { jwt_token: localStorage.token }
       });
 
-      const parseRes = await response.json();
+      const parseRes = await res.json();
 
-      parseRes === true ? setIsAuthenticated(true): setIsAuthenticated(false)
+      parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
     } catch (err) {
       console.error(err.message);
     }
-  }
+  };
 
   useEffect(() => {
-    isAuth();
-  });
+    checkAuthenticated();
+  }, []);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const setAuth = boolean => {
+    setIsAuthenticated(boolean);
+  };
+
 
   return (
     <Fragment>
       <Router>
         <div>
           <Switch>
-            <Route exact path="/login" render={props => !isAuthenticated ? <Login {...props} setAuth={setAuth}/> : <Redirect to="/home" />} />
-            <Route exact path="/createuser" render={props => !isAuthenticated ? <InputUser {...props} setAuth={setAuth} /> : < Redirect to="/login" />} />
-            <Route exact path="/home" render={props => isAuthenticated ? <Home {...props} setAuth={setAuth} /> : <Redirect to="/login"/>} />
+            <Route exact path="/login" render={props => !isAuthenticated ? (<Login {...props} setAuth={setAuth}/>) : (<Redirect to="/home" />)} />
+            <Route exact path="/createuser" render={props => !isAuthenticated ? (<InputUser {...props} setAuth={setAuth} />) : (< Redirect to="/login" />)} />
+            <Route exact path="/home" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
           </Switch>
         </div>
       </Router>

@@ -27,17 +27,25 @@ body{
   align-items: center;
   padding: .5rem;
 }
+
+.welcome{
+  text-align: center;
+}
+
 .brand a{
   color: #ffffff;
   font-size: 2.5rem;
   font-weight: bold;
   text-decoration: none;
 }
+
 .header-links a{
   color: #ffffff;
   text-decoration: none;
-  padding: 1rem;
+  padding-left: 10rem;
+  padding-right: 1rem;
 }
+
 .header-links a:hover{
   color: #6fff00;
 }
@@ -105,10 +113,11 @@ a:hover{
   cursor: pointer;
 }
 .sidebar{
+  margin-top: 5rem;
   position: fixed;
-  transition: all .5sec;
+  transition: all .5s;
   transform: translateX(-30rem);
-  width: 30rem;
+  width: 20rem;
   background-color: #f0f0f0;
   height: 100%;
 }
@@ -127,4 +136,8 @@ a:hover{
   position: absolute;
   right: .5rem;
   top: 1.5rem;
+}
+
+#userinput{
+  margin: 100px;
 }

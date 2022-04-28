@@ -1,6 +1,8 @@
 import React, { Fragment, useState} from "react";
 import { Link } from "react-router-dom"
 
+import { toast } from "react-toastify"
+
 const Login = ({ setAuth }) => {
     const [username, setUsername] = useState("");
     const [errorUsername, setErrorUsername] = useState("");
@@ -26,7 +28,7 @@ const Login = ({ setAuth }) => {
     }
 
     const onSubmit = async e => {
-        e.preventDefault()
+        e.preventDefault();
         if (validateCredentials()) {
             try {
                 const body = { username, password }
@@ -37,20 +39,25 @@ const Login = ({ setAuth }) => {
                     body: JSON.stringify(body)
                 });
 
-                const parseRes = await response.json()
-
-                localStorage.setItem("token", parseRes.token);
-
-                setAuth(true);
-            } catch (err) {
-            console.error(err.message)
+                const parseRes = await response.json();
+                if (parseRes.jwtToken) {
+                  localStorage.setItem("token", parseRes.jwtToken);
+                  setAuth(true);
+                  toast.success("Logged in Successfully");
+                } else {
+                  setAuth(false);
+                  toast.error(parseRes);
+                }
+              } catch (err) {
+                console.error(err.message);
+              }
             }
-        }
-    }
+          };
+          
     return (
         <Fragment>
           <h1 className="text-center mt-5">Login</h1>
-          <form className="mt-5" onSubmit={onSubmit}>
+          <form className="mt-5" id="userinput" onSubmit={onSubmit}>
             <div className="form-group">
               <span className="label">Username</span>
               <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
