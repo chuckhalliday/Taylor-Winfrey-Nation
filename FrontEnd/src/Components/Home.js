@@ -46,7 +46,7 @@ const Home = ({ setAuth }) => {
                 <button onClick={openMenu}>
                     &#9776;
                 </button>
-                <a href="sitemap.html">The Official Taylor Winfrey Payment Experience!!!!!!</a>
+                <a id="title" href="sitemap.html">The Official Taylor Winfrey Payment Experience!!!!!!</a>
             </div>
             <div className="header-links">
                 <a href="cart.html">Cart</a>

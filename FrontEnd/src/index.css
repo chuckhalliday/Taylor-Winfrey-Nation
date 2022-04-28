@@ -20,12 +20,16 @@ body{
 }
 .header{
   grid-area: header;
-  background-color: #cd41a1;
+  background-color: #c641cd;
   color: #ffffff;
   display: flex;
   justify-content: "space-between";
   align-items: center;
   padding: .5rem;
+}
+
+#title {
+  margin-left: 15px;
 }
 
 .welcome{
@@ -117,7 +121,7 @@ a:hover{
   position: fixed;
   transition: all .5s;
   transform: translateX(-30rem);
-  width: 20rem;
+  width: 15rem;
   background-color: #f0f0f0;
   height: 100%;
 }
