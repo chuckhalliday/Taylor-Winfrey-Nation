@@ -1,5 +1,4 @@
 import React, { Fragment, useState} from "react";
-import { Link } from "react-router-dom"
 
 import { toast } from "react-toastify"
 
@@ -68,9 +67,10 @@ const Login = ({ setAuth }) => {
               <input type="text" className="form-control" value={password} onChange={e => setPassword(e.target.value)} />
               <span style={{ color: "red" }}>{errorPassword}</span><br />
             </div>
-            <button className="btn btn-success">Login</button>
+            <button className="btn btn-success mb-5">Login</button><br />
+            <a href="/createUser">Register</a>
           </form>
-          <Link to="/createuser">Register</Link>
+
         </Fragment>
       );    
 }

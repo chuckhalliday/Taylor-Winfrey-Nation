@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom"
 
 const InputUser = () => {
   const [username, setUsername] = useState("");
@@ -101,9 +100,10 @@ const InputUser = () => {
           <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} />
           <span style={{ color: "red" }}>{errorEmail}</span><br />
         </div>
-        <button className="btn btn-success">Add User</button>
+        <button className="btn btn-success mb-5">Add User</button><br/>
+        <a href="/login">Login</a>
       </form>
-      <Link to="/login">Login</Link>
+
 
     </Fragment>
   );

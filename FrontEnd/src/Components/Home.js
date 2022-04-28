@@ -49,7 +49,7 @@ const Home = ({ setAuth }) => {
                 <a id="title" href="sitemap.html">The Official Taylor Winfrey Payment Experience!!!!!!</a>
             </div>
             <div className="header-links">
-                <a href="cart.html">Cart</a>
+                <a id="cart" href="cart.html">Cart</a>
                 <button className="btn btn-success" onClick={e => logout(e)}>Logout</ button>
             </div>
         </header>
@@ -69,7 +69,7 @@ const Home = ({ setAuth }) => {
             </ul>
         </aside>
         <main className="main">
-        <div className="welcome"><h2>Welcome {name}</h2></div>
+        <div className="welcome"><h2>You belong to us now, {name}</h2></div>
             <div className="content">
                 <ul className="products">
                     <li>
@@ -108,14 +108,14 @@ const Home = ({ setAuth }) => {
                             <div className="product-name">
                                 <a href="product.html"></a>
                                 Chill Out Jack</div>
-                            <div className="product-price">You can't afford it</div>
+                            <div className="product-price">(Sorry, you can't afford it) 😔</div>
                             <div className="product-rating">5 Stars(756k reviews)</div>
                         </div>
                     </li>
             </ul>
             </div>
         </main>
-        <footer>
+        <footer className="footer">
             All rights reserved.
         </footer>
     </div>
