@@ -6,7 +6,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import InputUser from "./Components/CreateUser";
 import Login from "./Components/Login";
-import Home from "./Components/Home"
+import Home from "./Components/Home";
+import Singles from "./Components/Singles";
+import Tour from "./Components/Tour";
+import Merch from "./Components/Merch";
 
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
             <Route exact path="/login" render={props => !isAuthenticated ? (<Login {...props} setAuth={setAuth}/>) : (<Redirect to="/home" />)} />
             <Route exact path="/createuser" render={props => !isAuthenticated ? (<InputUser {...props} setAuth={setAuth} />) : (< Redirect to="/login" />)} />
             <Route exact path="/home" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/singles" render={props => isAuthenticated ? (<Singles {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/tour" render={props => isAuthenticated ? (<Tour {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/merch" render={props => isAuthenticated ? (<Merch {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
           </Switch>
         </div>
       </Router>
