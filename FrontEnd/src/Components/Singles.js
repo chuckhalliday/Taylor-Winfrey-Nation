@@ -13,7 +13,6 @@ const Singles = () => {
         }
         fetchData();
         return () => {
-
         };
     }, []);
 

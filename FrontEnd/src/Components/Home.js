@@ -19,18 +19,6 @@ const Home = ({ setAuth }) => {
       }
     };
 
-    const [products, setProduct] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () =>{
-            const {data} = await axios.get("http://localhost:5000/products")
-            setProduct(data)
-        }
-        fetchData();
-        return () => {
-
-        };
-    }, []);
 
     const logout = (e) => {
         e.preventDefault();
@@ -50,6 +38,18 @@ const Home = ({ setAuth }) => {
     const closeMenu = () => {
         document.querySelector(".sidebar").classList.remove("open");
     }
+
+    const [products, setProduct] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () =>{
+            const {data} = await axios.get("http://localhost:5000/products")
+            setProduct(data)
+        }
+        fetchData();
+        return () => {
+        };
+    }, []);
 
     return (
         <Fragment>
