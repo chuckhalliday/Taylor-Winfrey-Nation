@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import axios from 'axios';
 
 const Home = ({ setAuth }) => {
     const [name, setName] = useState("");
@@ -17,6 +18,19 @@ const Home = ({ setAuth }) => {
         console.error(err.message);
       }
     };
+
+    const [products, setProduct] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () =>{
+            const {data} = await axios.get("http://localhost:5000/products")
+            setProduct(data)
+        }
+        fetchData();
+        return () => {
+
+        };
+    }, []);
 
     const logout = (e) => {
         e.preventDefault();
@@ -58,7 +72,7 @@ const Home = ({ setAuth }) => {
             <button className="sidebar-close-button" onClick={closeMenu}>x</button>
             <ul>
                 <li>
-                    <a href="./singles">Singles</a>
+                    <Link to="./singles">Singles</Link> 
                 </li>
                 <li>
                     <a href="./tour">Tickets</a>
@@ -72,46 +86,18 @@ const Home = ({ setAuth }) => {
         <div className="welcome"><h2>You belong to us now, {name}</h2></div>
             <div className="content">
                 <ul className="products">
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/BetterCoffee.jpeg" alt="album art" />
-                            <div className="product-name">
-                                <a href=""></a>
-                                Better Coffee</div>
-                            <div className="product-price">$405,701.99</div>
-                            <div className="product-rating">5 Stars(105k reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/Canada.jpeg" alt="album art" />
-                            <div className="product-name">
-                                <a href="product.html"></a>
-                                EZ N THA BC</div>
-                            <div className="product-price">$720,053.99</div>
-                            <div className="product-rating">5 Stars(374k reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/SexyForces.jpeg" alt="album art" />
-                            <div className="product-name">
-                                <a href="product.html"></a>
-                                Sexy Nato Forces</div>
-                            <div className="product-price">₽100,000,000.00</div>
-                            <div className="product-rating">5 Stars(214k reviews)</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="product">
-                            <img className="product-image" src="/images/Jack.jpeg" alt="album art" />
-                            <div className="product-name">
-                                <a href="product.html"></a>
-                                Chill Out Jack</div>
-                            <div className="product-price">(Sorry, you can't afford it) 😔</div>
-                            <div className="product-rating">5 Stars(756k reviews)</div>
-                        </div>
-                    </li>
+                    {
+                    products.map(product =>
+                        <li key={product.id}>
+                            <div className="product">
+                                <img className="product-image" src={product.image} alt="album art" />
+                                <div className="product-name">
+                                <a href=""></a>{product.name}</div>
+                                <div className="product-price">{product.price}</div>
+                                <div className="product-rating">{product.description}</div>
+                            </div>
+                        </li>)
+                    }
             </ul>
             </div>
         </main>

@@ -49,7 +49,7 @@ const getUserById = (request, response) => {
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id)
   const { username, password, first_name, last_name, email } = request.body
-  pool.query( 'UPDATE users SET username = $1, password = $2, first_name = $3, last_name = $4, email = $5 WHERE id = $6',
+  pool.query( 'UPDATE users SET modified_at = NOW(), username = $1, password = $2, first_name = $3, last_name = $4, email = $5 WHERE id = $6',
   [username, password, first_name, last_name, email, id],
   (error, results) => {
     if (error) {

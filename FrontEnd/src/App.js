@@ -47,9 +47,9 @@ function App() {
             <Route exact path="/login" render={props => !isAuthenticated ? (<Login {...props} setAuth={setAuth}/>) : (<Redirect to="/home" />)} />
             <Route exact path="/createuser" render={props => !isAuthenticated ? (<InputUser {...props} setAuth={setAuth} />) : (< Redirect to="/login" />)} />
             <Route exact path="/home" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
-            <Route exact path="/singles" render={props => isAuthenticated ? (<Singles {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
-            <Route exact path="/tour" render={props => isAuthenticated ? (<Tour {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
-            <Route exact path="/merch" render={props => isAuthenticated ? (<Merch {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route path="/singles"><Singles /></Route>
+            <Route path="/tour"><Tour /></Route>
+            <Route path="/merch"><Merch /></Route>
           </Switch>
         </div>
       </Router>
