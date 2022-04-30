@@ -70,60 +70,60 @@ const deleteUser = (request, response) => {
   })
 }
 
-//Song commands:
+//Product commands:
 
 //displays all products
-const getSingles = (request, response) => {
-  pool.query('SELECT * FROM singles ORDER BY id ASC', (error, results) => {
+const getProducts = (request, response) => {
+  pool.query('SELECT * FROM product ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error
     }
      response.status(200).json(results.rows)
   })
 }
-//displays one song
-const getSingleById = (request, response) => {
+//displays single product
+const getProductById = (request, response) => {
   const id = parseInt(request.params.id)
-  pool.query('SELECT * FROM singles WHERE id = $1', [id], (error, results) => {
+  pool.query('SELECT * FROM product WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }
       response.status(200).json(results.rows)
   })
 }
-//creates new song
-const createSingle = (request, response) => {
+//creates new product
+const createProduct = (request, response) => {
   const { name, description, sku, price } = request.body
-  pool.query('INSERT INTO singles (name, description, sku, price) VALUES ($1, $2, $3, $4)',
+  pool.query('INSERT INTO product (name, description, sku, price) VALUES ($1, $2, $3, $4)',
   [name, description, sku, price], (error, results) => {
     if (error) {
       throw error
     }
-      response.status(201).send(`Song added with ID: ${results.id}`)
+      response.status(201).send(`Product added with ID: ${results.id}`)
   })
 }
 //updates existing product
-const updateSingle = (request, response) => {
+const updateProduct = (request, response) => {
   const id = parseInt(request.params.id)
   const { name, description, sku, price } = request.body
-  pool.query( 'UPDATE singles SET modified_at = NOW(), name = $1, description = $2, sku = $3, price = $4 WHERE id = $5',
+  pool.query( 'UPDATE product SET name = $1, description = $2, sku = $3, price = $4 WHERE id = $5',
   [name, description, sku, price, id],
   (error, results) => {
     if (error) {
       throw error
     }
-      response.status(200).send(`Song modified with ID: ${id}`)
+      response.status(200).send(`Product modified with ID: ${id}`)
   })
 }
 //deletes product
-const deleteSingle = (request, response) => {
+const deleteProduct = (request, response) => {
   const id = parseInt(request.params.id)
 
-  pool.query('DELETE FROM singles WHERE id = $1', [id], (error, results) => {
+  pool.query('DELETE FROM product WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }
-      response.status(200).send(`Song deleted with ID: ${id}`)
+      response.status(200).send(`Product deleted with ID: ${id}`)
   })
 }
 
@@ -134,9 +134,9 @@ module.exports = {
   //createUser,
   updateUser,
   deleteUser,
-  getSingles,
-  getSingleById,
-  createSingle,
-  updateSingle,
-  deleteSingle
+  getProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct
 }
