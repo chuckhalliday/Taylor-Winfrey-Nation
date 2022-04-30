@@ -26,11 +26,11 @@ app.get('/users/:id', pool.getUserById);
 app.put('/users/:id', pool.updateUser);
 app.delete('/users/:id', pool.deleteUser);
 
-app.get('/products', pool.getProducts);
-app.get('/products/:id', pool.getProductById);
-app.post('/products', pool.createProduct);
-app.put('/products/:id', pool.updateProduct);
-app.delete('/products/:id', pool.deleteProduct);
+app.get('/songs', pool.getSingles);
+app.get('/songs/:id', pool.getSingleById);
+app.post('/songs', pool.createSingle);
+app.put('/songs/:id', pool.updateSingle);
+app.delete('/songs/:id', pool.deleteSingle);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

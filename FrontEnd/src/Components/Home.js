@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import axios from 'axios';
 
 const Home = ({ setAuth }) => {
@@ -19,12 +19,12 @@ const Home = ({ setAuth }) => {
       }
     };
 
-    const [products, setProduct] = useState([]);
+    const [songs, setSong] = useState([]);
 
     useEffect(() => {
         const fetchData = async () =>{
-            const {data} = await axios.get("http://localhost:5000/products")
-            setProduct(data)
+            const {data} = await axios.get("http://localhost:5000/songs")
+            setSong(data)
         }
         fetchData();
         return () => {
@@ -52,9 +52,9 @@ const Home = ({ setAuth }) => {
     }
 
     return (
-        <Fragment>
-            <Router>
-           <div className="grid-container">
+    <Fragment>
+    <Router>
+    <div className="grid-container">
         <header className="header">
             <div className="brand">
                 <button onClick={openMenu}>
@@ -75,10 +75,10 @@ const Home = ({ setAuth }) => {
                     <Link to="./singles">Singles</Link> 
                 </li>
                 <li>
-                    <a href="./tour">Tickets</a>
+                    <Link to="./tour">Tickets</Link>
                 </li>
                 <li>
-                    <a href="./merch">Merch</a>
+                    <Link to="./merch">Merch</Link>
                 </li>
             </ul>
         </aside>
@@ -87,14 +87,14 @@ const Home = ({ setAuth }) => {
             <div className="content">
                 <ul className="products">
                     {
-                    products.map(product =>
-                        <li key={product.id}>
+                    songs.map(song =>
+                        <li key={song.id}>
                             <div className="product">
-                                <img className="product-image" src={product.image} alt="album art" />
+                                <img className="product-image" src={song.image} alt="album art" />
                                 <div className="product-name">
-                                <a href=""></a>{product.name}</div>
-                                <div className="product-price">{product.price}</div>
-                                <div className="product-rating">{product.description}</div>
+                                <a href=""></a>{song.name}</div>
+                                <div className="product-price">{song.price}</div>
+                                <div className="product-rating">{song.description}</div>
                             </div>
                         </li>)
                     }
@@ -106,7 +106,7 @@ const Home = ({ setAuth }) => {
         </footer>
     </div>
     </Router>
-        </Fragment>
+    </Fragment>
     );
 };
 
