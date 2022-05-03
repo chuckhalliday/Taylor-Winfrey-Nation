@@ -1,6 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from 'axios';
+import Singles from '../Components/Singles'
+import ProductScreen from './ProductScreen'
 
 const Home = ({ setAuth }) => {
     const [name, setName] = useState("");
@@ -39,20 +40,7 @@ const Home = ({ setAuth }) => {
         document.querySelector(".sidebar").classList.remove("open");
     }
 
-    const [products, setProduct] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () =>{
-            const {data} = await axios.get("http://localhost:5000/products")
-            setProduct(data)
-        }
-        fetchData();
-        return () => {
-        };
-    }, []);
-
     return (
-        <Fragment>
             <Router>
            <div className="grid-container">
         <header className="header">
@@ -72,33 +60,21 @@ const Home = ({ setAuth }) => {
             <button className="sidebar-close-button" onClick={closeMenu}>x</button>
             <ul>
                 <li>
-                    <Link to="./singles">Singles</Link> 
+                    <Link to="/singles">Singles</Link> 
                 </li>
                 <li>
-                    <a href="./tour">Tickets</a>
+                    <Link to="/tour">Tickets</Link>
                 </li>
                 <li>
-                    <a href="./merch">Merch</a>
+                    <Link to="/merch">Merch</Link>
                 </li>
             </ul>
         </aside>
         <main className="main">
         <div className="welcome"><h2>You belong to us now, {name}</h2></div>
-            <div className="content">
-                <ul className="products">
-                    {
-                    products.map(product =>
-                        <li key={product.id}>
-                            <div className="product">
-                                <img className="product-image" src={product.image} alt="album art" />
-                                <div className="product-name">
-                                <a href=""></a>{product.name}</div>
-                                <div className="product-price">{product.price}</div>
-                                <div className="product-rating">{product.description}</div>
-                            </div>
-                        </li>)
-                    }
-            </ul>
+        <div className="content">
+            <Route path="/products/:id" component={ProductScreen} />
+            <Route path="/singles" exact={true} component={Singles} />
             </div>
         </main>
         <footer className="footer">
@@ -106,7 +82,6 @@ const Home = ({ setAuth }) => {
         </footer>
     </div>
     </Router>
-        </Fragment>
     );
 };
 

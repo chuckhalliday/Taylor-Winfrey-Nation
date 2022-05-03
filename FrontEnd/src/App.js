@@ -4,12 +4,9 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 //components
 
-import InputUser from "./Components/CreateUser";
-import Login from "./Components/Login";
-import Home from "./Components/Home";
-import Singles from "./Components/Singles";
-import Tour from "./Components/Tour";
-import Merch from "./Components/Merch";
+import InputUser from "./Pages/CreateUser";
+import Login from "./Pages/Login";
+import Home from "./Pages/Home";
 
 
 function App() {

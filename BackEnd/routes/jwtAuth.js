@@ -13,7 +13,7 @@ router.post("/register", validInfo, async (req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         
         if (user.rows.length > 0) {
-            return res.status(401).send("User already exists")
+            return res.status(401).send({msg: "User already exists"})
         }
         const salt = await bcrypt.genSalt(10);
 
@@ -48,7 +48,7 @@ router.post("/login", validInfo, async (req, res) => {
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
         if (!validPassword) {
-            return res.status(401).json("Username or Password is incorrect")
+            return res.status(401).json({msg: "Username or Password is incorrect"})
         }
         
         const jwtToken = jwtGenerator(user.rows[0].id);
