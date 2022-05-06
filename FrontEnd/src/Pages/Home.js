@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Welcome from '../Components/Welcome'
 import Singles from '../Components/Singles'
 import Merch from '../Components/Merch'
+import Tour from '../Components/Tour'
 import ProductScreen from './ProductScreen'
 
 const Home = ({ setAuth }) => {
@@ -49,7 +51,7 @@ const Home = ({ setAuth }) => {
                 <button onClick={openMenu}>
                     &#9776;
                 </button>
-                <a id="title" href="sitemap.html">The Official Taylor Winfrey Payment Experience!!!!!!</a>
+                <a id="title" href="/">The Official Taylor Winfrey Payment Experience!!!!!!</a>
             </div>
             <div className="header-links">
                 <a id="cart" href="cart.html">Cart</a>
@@ -74,10 +76,11 @@ const Home = ({ setAuth }) => {
         <main className="main">
         <div className="welcome"><h2>You belong to us now, {name}</h2></div>
         <div className="content">
+            <Route path="/home" exact={true} component={Welcome} />
             <Route path="/products/:id" component={ProductScreen} />
             <Route path="/singles" exact={true} component={Singles} />
             <Route path="/merch" exact={true} component={Merch} />
-
+            <Route path="/tour" exact={true} component={Tour} />
             </div>
         </main>
         <footer className="footer">
