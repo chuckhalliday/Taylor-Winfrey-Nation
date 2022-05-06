@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Singles from '../Components/Singles'
+import Merch from '../Components/Merch'
 import ProductScreen from './ProductScreen'
 
 const Home = ({ setAuth }) => {
@@ -63,10 +64,10 @@ const Home = ({ setAuth }) => {
                     <Link to="/singles">Singles</Link> 
                 </li>
                 <li>
-                    <Link to="/tour">Tickets</Link>
+                    <Link to="/merch">Merch</Link>
                 </li>
                 <li>
-                    <Link to="/merch">Merch</Link>
+                    <Link to="/tour">Tickets</Link>
                 </li>
             </ul>
         </aside>
@@ -75,6 +76,8 @@ const Home = ({ setAuth }) => {
         <div className="content">
             <Route path="/products/:id" component={ProductScreen} />
             <Route path="/singles" exact={true} component={Singles} />
+            <Route path="/merch" exact={true} component={Merch} />
+
             </div>
         </main>
         <footer className="footer">
