@@ -5,13 +5,16 @@ const Welcome = () => {
 
   return (
     <center>
-        <iframe 
-            src="https://3dthis.com/play.htm?h=OTE0NjUyNw&amp;autostart" 
+      <div id="tw">
+        <iframe
+            id="crop" 
+            src="https://3dthis.com/player.htm?h=OTE0NjUyNw" 
             width="514" 
             height="516" 
             frameborder="0" 
             allowfullscreen="">
         </iframe>
+        </div>
     </center>
   )
 };
