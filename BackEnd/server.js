@@ -27,6 +27,7 @@ app.put('/users/:id', pool.updateUser);
 app.delete('/users/:id', pool.deleteUser);
 
 app.get('/products', pool.getProducts);
+app.get('/products/category/:category_id', pool.getProductByCategory);
 app.get('/products/:id', pool.getProductById);
 app.post('/products', pool.createProduct);
 app.put('/products/:id', pool.updateProduct);

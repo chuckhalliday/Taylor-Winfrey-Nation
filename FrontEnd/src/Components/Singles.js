@@ -8,7 +8,7 @@ const Singles = () => {
 
     useEffect(() => {
         const fetchData = async () =>{
-            const {data} = await axios.get("http://localhost:5000/products")
+            const {data} = await axios.get("http://localhost:5000/products/category/1")
             setProduct(data)
         }
         fetchData();
@@ -20,7 +20,7 @@ const Singles = () => {
         <ul className="products">
             {
             products.map(product =>
-                <li key={product.id}>
+                <li key={product.category_id}>
                     <div className="product">
                     <Link><img className="product-image" src={product.image} alt="album art" /></Link>
                     <div className="product-name">

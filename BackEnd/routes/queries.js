@@ -78,7 +78,21 @@ const getProducts = (request, response) => {
      response.status(200).json(results.rows)
   })
 }
+
+//displays products by type
+
+const getProductByCategory = (request, response) => {
+  const category_id = parseInt(request.params.category_id)
+  pool.query('SELECT * FROM product WHERE category_id = $1', [category_id], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).json(results.rows)
+  })
+}
+
 //displays single product
+
 const getProductById = (request, response) => {
   const id = parseInt(request.params.id)
   pool.query('SELECT * FROM product WHERE id = $1', [id], (error, results) => {
@@ -132,6 +146,7 @@ module.exports = {
   updateUser,
   deleteUser,
   getProducts,
+  getProductByCategory,
   getProductById,
   createProduct,
   updateProduct,
