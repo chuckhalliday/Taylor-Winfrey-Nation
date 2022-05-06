@@ -20,6 +20,7 @@ body{
 }
 .header{
   position: sticky;
+  z-index: 999;
   top: 0;
   grid-area: header;
   background-color: #9b1da2;
@@ -64,18 +65,18 @@ body{
 }
 #tw{
   overflow: hidden;
-  height: 500px;
+  height: 510px;
   width: 440px;
 }
 #crop{
   position: relative;
   height: 550px;
-  top: -150px;
-  left: -12px;
+  top: -145px;
+  left: -25px;
 }
 .footer{
   grid-area: footer;
-  background-color: #203040;
+  background-color: #9b1da2;
   color: #ffffff;
   display: flex;
   justify-content: center;
