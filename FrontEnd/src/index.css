@@ -5,8 +5,9 @@ html{
 body{
   background-color: rgb(218, 213, 216);
   font: 1.6rem Helvetica;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
 }
 .grid-container{
   display: grid;
@@ -26,14 +27,9 @@ body{
   background-color: #9b1da2;
   color: #ffffff;
   display: flex;
-  justify-content: "space-between";
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-}
-#title {
-  position: absolute;
-  left: 5rem;
-  top: 1.1rem;
-  padding-right: 10px;
 }
 .welcome{
   text-align: center;
@@ -49,10 +45,6 @@ body{
   padding-left: 10px;
   padding-right: 10px;
 }
-.header-links{
-  position: absolute;
-  right: 10px;
-}
 .header-links a{
   color: #ffffff;
   text-decoration: none;
@@ -62,10 +54,11 @@ body{
 }
 .main{
   grid-area: main;
+  margin-bottom: 110px;
 }
 #tw{
   overflow: hidden;
-  height: 510px;
+  height: 440px;
   width: 440px;
 }
 #crop{
@@ -73,12 +66,14 @@ body{
   height: 550px;
   top: -145px;
   left: -25px;
+  -webkit-filter:invert(100%);
 }
 .footer{
   grid-area: footer;
   background-color: #9b1da2;
   color: #ffffff;
   display: flex;
+  position: sticky;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
