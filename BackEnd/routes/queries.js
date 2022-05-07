@@ -1,3 +1,5 @@
+const req = require('express/lib/request')
+
 const Pool = require('pg').Pool
 const pool = new Pool({
   host: 'localhost',
