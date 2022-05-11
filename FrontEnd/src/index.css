@@ -137,8 +137,9 @@ a:hover{
   transform: translateX(-30rem);
   width: 12rem;
   background-color: #f0f0f0;
-  height: 15%;
+  height: 130px;
   text-align: left;
+  z-index: 999;
 }
 .sidebar.open{
   transform: translateX(0);
@@ -177,4 +178,53 @@ a:hover{
 .alert-danger {
   color: #a02020;
   background-color: #ffe0e0e0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li {
+  margin-top: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row.top {
+  align-items: flex-start;
+}
+
+.col-1 {
+  flex: 1 1 25rem;
+}
+
+.col-2 {
+  flex: 2 1 50rem;
+}
+
+.card {
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.large {
+  max-width: 34rem;
+  max-height: 34rem;
+}
+
+.price {
+  font-size: 2rem;
 }

@@ -7,8 +7,8 @@ import MessageBox from './MessageBox';
 function ProductDetails(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
-    const productDetails = useSelector( state => state.productDetails);
-    const { loading, error, product} = productDetails;
+    const productDetails = useSelector(state => state.productDetails);
+    const { loading, error, product } = productDetails;
 
     useEffect(() => {
         dispatch(detailsProduct(productId));
@@ -22,6 +22,7 @@ function ProductDetails(props) {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <div>
+            { product.map(product =>
             <div className="row top">
               <div className="col-2">
                 <img
@@ -35,7 +36,7 @@ function ProductDetails(props) {
                   <li>
                     <h1>{product.name}</h1>
                   </li>
-                  <li>Price : ${product.price}</li>
+                  <li>Price : {product.price}</li>
                   <li>
                     Description:
                     <p>{product.description}</p>
@@ -48,7 +49,7 @@ function ProductDetails(props) {
                     <li>
                       <div className="row">
                         <div>Price</div>
-                        <div className="price">${product.price}</div>
+                        <div className="price">{product.price}</div>
                       </div>
                     </li>
                     <li>
@@ -66,7 +67,7 @@ function ProductDetails(props) {
                     </ul>
                     </div>
                 </div>
-            </div>
+            </div>)}
          </div>
         )}
     </div>
