@@ -2,7 +2,7 @@ html{
   font-size: 62.5%;
   box-sizing: border-box;
 }
-body{
+body {
   background-color: rgb(218, 213, 216);
   font: 1.6rem Helvetica;
   min-height: 100vh;
@@ -12,9 +12,9 @@ body{
 .grid-container{
   display: grid;
   grid-template-areas:
-  "header"
-  "main"
-  "footer";
+  'header'
+  'main'
+  'footer';
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
@@ -193,8 +193,9 @@ li {
 .row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+
 }
 
 .row.center {
@@ -208,27 +209,31 @@ li {
 .col-1 {
   flex: 1 1 25rem;
 }
+.col-1 li {
+  width: 200px;
+  align-items: left;
+  margin-left: -8px ;
+}
 
 .col-2 {
   flex: 2 1 50rem;
-  margin-left: 120px;
-  margin-right: 10px;
 }
 
 .card {
   border: 0.1rem #c0c0c0 solid;
   background-color: #ffffff;
   border-radius: 0.5rem;
-  margin: 1rem;
+  width:210px;
+  margin-left: 0px;
 }
 
 .card-body {
-  padding: 2rem;
+  padding: 1rem;
+  align-self: flex-start;
 }
 
 .large {
-  max-width: 34rem;
-  max-height: 34rem;
+  width: 200%;
 }
 
 .price {

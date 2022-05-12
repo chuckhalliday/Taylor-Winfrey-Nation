@@ -31,7 +31,7 @@ function ProductDetails(props) {
                   alt={product.name}
                 ></img>
               </div>
-              <div>
+              <div className="col-1">
                 <ul>
                   <li>
                     <h1>{product.name}</h1>
@@ -42,7 +42,7 @@ function ProductDetails(props) {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="col-1">
                 <div className="card card-body">
                   <ul>
                     <li>
