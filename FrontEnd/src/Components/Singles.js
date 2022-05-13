@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import MessageBox from "./MessageBox";
 import LoadingBox from "./LoadingBox";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../Actions/productActions";
+import { listSingles } from "../Actions/productActions";
 import { Link } from "react-router-dom";
 
 const Singles = () => {
@@ -11,7 +11,7 @@ const Singles = () => {
     const {loading, error, products} = productList
 
     useEffect(() => {
-        dispatch(listProducts())
+        dispatch(listSingles())
     }, []);
 
     return (

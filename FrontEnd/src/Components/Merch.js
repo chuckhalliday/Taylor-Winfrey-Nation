@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import MessageBox from "./MessageBox";
+import LoadingBox from "./LoadingBox";
+import { useDispatch, useSelector } from "react-redux";
+import { listMerch } from "../Actions/productActions";
 
 const Merch = () => {
 
-    const [products, setProduct] = useState([]);
+    const dispatch = useDispatch();
+    const productList = useSelector( state => state.productList);
+    const {loading, error, products} = productList
 
     useEffect(() => {
-        const fetchData = async () =>{
-            const {data} = await axios.get("http://localhost:5000/products/category/2")
-            setProduct(data)
-        }
-        fetchData();
-        return () => {
-        };
+        dispatch(listMerch())
     }, []);
 
     return (
+        <div>
+        {loading ? (
+            <LoadingBox></LoadingBox>
+          )  : error ? (
+              <MessageBox variant="danger">{error}</MessageBox>
+          ) : (
         <ul className="products">
             {
             products.map(product =>
@@ -24,15 +29,15 @@ const Merch = () => {
                     <div className="product">
                     <Link><img className="product-image" src={product.image} alt="album art" /></Link>
                     <div className="product-name">
-                    <Link to={'/product/' + product._id}>{product.name}</Link>
+                    <Link to={'/product/' + product.id}>{product.name}</Link>
                     </div>
                     <div className="product-price">{product.price}</div>
                     <div className="product-rating">{product.description}</div>
                     </div>
                 </li>)
             }
-        </ul>
-
+        </ul>)}
+        </div>
     );
 };
 

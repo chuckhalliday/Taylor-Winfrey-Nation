@@ -63,6 +63,9 @@ function ProductDetails(props) {
                         </div>
                       </div>
                       </li>
+                      <li>
+                        <button className="primary block">Add to Cart</button>
+                      </li>
                     </ul>
                     </div>
                 </div>
