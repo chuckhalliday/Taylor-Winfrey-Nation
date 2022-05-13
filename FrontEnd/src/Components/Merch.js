@@ -13,7 +13,7 @@ const Merch = () => {
 
     useEffect(() => {
         dispatch(listMerch())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>

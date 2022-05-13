@@ -13,7 +13,7 @@ const Tour = () => {
 
     useEffect(() => {
         dispatch(listShows())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>

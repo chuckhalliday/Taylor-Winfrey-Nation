@@ -12,7 +12,7 @@ const Singles = () => {
 
     useEffect(() => {
         dispatch(listSingles())
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>
