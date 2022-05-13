@@ -213,7 +213,7 @@ li {
 }
 .col-1 li {
   width: 200px;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .col-2 {
@@ -250,6 +250,10 @@ li {
 .card-body {
   padding: 1rem;
   align-self: flex-start;
+}
+
+#cartbutton {
+  width: 105%;
 }
 
 .gold{
