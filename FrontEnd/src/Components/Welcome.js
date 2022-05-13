@@ -15,6 +15,10 @@ const Welcome = () => {
             allowfullscreen="">
         </iframe>
         </div>
+        <div>
+          <h2>"Hater's gonna hate hate hate hate hate...</h2>
+          <h2>You get a car!  You get a car!"</h2>
+        </div>
     </center>
   )
 };

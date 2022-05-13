@@ -79,7 +79,7 @@ const Home = ({ setAuth }) => {
         <div className="welcome"><h2>You belong to us now, {name}</h2></div>
         <div className="content">
             <Route path="/home" exact={true} component={Welcome} />
-            <Route path="/product/:id" component={ProductDetails} />
+            <Route path="/products/:id" component={ProductDetails} />
             <Route path="/singles" exact={true} component={Singles} />
             <Route path="/merch" exact={true} component={Merch} />
             <Route path="/tour" exact={true} component={Tour} />

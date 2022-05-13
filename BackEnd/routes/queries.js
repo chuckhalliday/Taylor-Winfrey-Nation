@@ -85,7 +85,7 @@ const getProducts = (request, response) => {
 
 const getProductByCategory = (request, response) => {
   const category_id = parseInt(request.params.category_id)
-  pool.query('SELECT product.id AS id, name, description, price, image FROM product LEFT JOIN discount ON (product.discount_id = discount.id) WHERE category_id = $1 ORDER BY product.id ASC', 
+  pool.query('SELECT product.id AS id, name, description, price, image, discount_percent FROM product LEFT JOIN discount ON (product.discount_id = discount.id) WHERE category_id = $1 ORDER BY product.id ASC', 
   [category_id], (error, results) => {
     if (error) {
       throw error
@@ -98,7 +98,7 @@ const getProductByCategory = (request, response) => {
 
 const getProductById = (request, response) => {
   const id = parseInt(request.params.id)
-  pool.query('SELECT product.id AS id, name, description, image, price, quantity, discount_percent FROM product LEFT JOIN discount ON (product.discount_id = discount.id) LEFT JOIN product_inventory ON (product.inventory_id = product_inventory.id) WHERE product.id = $1', [id], (error, results) => {
+  pool.query('SELECT product.id AS id, name, description, image, price, quantity, discount_percent, reason FROM product LEFT JOIN discount ON (product.discount_id = discount.id) LEFT JOIN product_inventory ON (product.inventory_id = product_inventory.id) WHERE product.id = $1', [id], (error, results) => {
     if (error) {
       throw error
     }

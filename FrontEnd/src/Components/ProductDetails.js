@@ -43,7 +43,7 @@ function ProductDetails(props) {
                   </li>
                 </ul>
               </div>
-              <div className="col-1">
+              <div className="col-1" id="productname">
                 <div className="card card-body">
                   <ul>
                     <li>
@@ -58,6 +58,7 @@ function ProductDetails(props) {
                     <li>
                       <div className="row">
                         <div>Discount: </div>
+                        <div id="discountinfo" title={product.reason}>?</div>
                         <div className="price danger">${(Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent).toFixed(2)}</div>
                       </div>
                     </li>
@@ -85,7 +86,7 @@ function ProductDetails(props) {
                       </div>
                       </li>
                       <li>
-                        <button className="primary block">Add to Cart</button>
+                        <button className="gold block">Add to Cart</button>
                       </li>
                     </ul>
                     </div>

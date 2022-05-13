@@ -7,7 +7,10 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import InputUser from "./Pages/CreateUser";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
-
+import Singles from "./Components/Singles";
+import Tour from "./Components/Tour";
+import Merch from "./Components/Merch";
+import ProductDetails from "./Components/ProductDetails";
 
 function App() {
   const checkAuthenticated = async () => {
@@ -45,6 +48,10 @@ function App() {
             <Route exact path="/createuser" render={props => !isAuthenticated ? (<InputUser {...props} setAuth={setAuth} />) : (< Redirect to="/login" />)} />
             <Route exact path="/home" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
             <Route exact path="/" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/singles" render={props => isAuthenticated ? (<Singles {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/merch" render={props => isAuthenticated ? (<Merch {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/tour" render={props => isAuthenticated ? (<Tour {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
+            <Route exact path="/products/:id" render={props => isAuthenticated ? (<ProductDetails {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
           </Switch>
         </div>
       </Router>
