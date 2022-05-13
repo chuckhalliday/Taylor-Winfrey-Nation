@@ -14,6 +14,7 @@ function ProductDetails(props) {
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
 
+
     return (
         <div>
         {loading ? (
@@ -47,15 +48,35 @@ function ProductDetails(props) {
                   <ul>
                     <li>
                       <div className="row">
-                        <div>Price</div>
+                        <div>Price: </div>
                         <div className="price">{product.price}</div>
+                      </div>
+                    </li>
+                    <div>
+                    {product.discount_percent ? (
+                      <span>
+                    <li>
+                      <div className="row">
+                        <div>Discount: </div>
+                        <div className="price danger">${(Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent).toFixed(2)}</div>
                       </div>
                     </li>
                     <li>
                       <div className="row">
+                        <div>Total:</div>
+                        <div className="price">${(Number((product.price).replace(/[^0-9.-]+/g, "")) - (Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent)).toFixed(2)}</div>
+                      </div>
+                    </li>
+                    </span>
+                    ) : (
+                    <span>
+                    </span>)}
+                    </div>
+                    <li>
+                      <div className="row">
                         <div>Status:</div>
                         <div>
-                          {product.countInStock > 0 ? (
+                          {product.quantity > 0 ? (
                             <span className="success">In Stock</span>
                           ) : (
                             <span className="danger">Unavailable</span>
