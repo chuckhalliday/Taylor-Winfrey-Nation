@@ -5,6 +5,7 @@ import Singles from '../Components/Singles'
 import Merch from '../Components/Merch'
 import Tour from '../Components/Tour'
 import ProductDetails from '../Components/ProductDetails'
+import CartScreen from "../Components/Cart";
 
 const Home = ({ setAuth }) => {
     const [name, setName] = useState("");
@@ -83,6 +84,7 @@ const Home = ({ setAuth }) => {
             <Route path="/singles" exact={true} component={Singles} />
             <Route path="/merch" exact={true} component={Merch} />
             <Route path="/tour" exact={true} component={Tour} />
+            <Route path="/cart/:id?"  component={CartScreen}/>
             </div>
         </main>
         <footer className="footer">

@@ -31,7 +31,6 @@ const Singles = () => {
                     <Link to={'/products/' + product.id}>{product.name}</Link>
                     </div>
                     <div className="product-price">{product.price}</div>
-                    <div>
                     {product.discount_percent ? (
                       <span>
                       <div>
@@ -46,7 +45,6 @@ const Singles = () => {
                     ) : (
                     <span>
                     </span>)}
-                    </div>
                     <div className="product-rating">{product.description}</div>
                     </div>
                 </li>)

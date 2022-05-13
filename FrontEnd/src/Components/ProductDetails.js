@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsProduct } from '../Actions/productActions';
 import LoadingBox from './LoadingBox';
@@ -7,12 +7,17 @@ import MessageBox from './MessageBox';
 function ProductDetails(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
+    const [qty, setQty] = useState(1);
     const productDetails = useSelector(state => state.productDetails);
     const { loading, error, product } = productDetails;
 
     useEffect(() => {
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
+
+    const addToCartHandler = () => {
+      props.history.push(`/cart/${productId}?qty=${qty}`);
+    }
 
 
     return (
@@ -85,9 +90,26 @@ function ProductDetails(props) {
                         </div>
                       </div>
                       </li>
+                      {product.quantity > 0 && (
+                      <>
                       <li>
-                        <button className="gold block" id="cartbutton">Add to Cart</button>
+                        <div className="row">
+                          <div>Qty</div>
+                          <div>
+                            <select value={qty} onChange={(e) => setQty(e.target.value)}>
+                              {
+                                [...Array(product.quantity).keys()].map( (x) => (
+                                  <option key={x+1} value={x+1}>{x+1}</option>
+                                ))
+                              }
+                            </select>
+                          </div>
+                        </div>
                       </li>
+                      <li>
+                        <button onClick={addToCartHandler} className="gold block" id="cartbutton">Add to Cart</button>
+                      </li>
+                      </>)}
                     </ul>
                     </div>
                 </div>
