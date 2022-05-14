@@ -34,12 +34,8 @@ const Singles = () => {
                     {product.discount_percent ? (
                       <span>
                       <div>
-                        <div>Discount: </div>
-                        <div className="price danger">${(Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent).toFixed(2)}</div>
-                      </div>
-                      <div>
-                        <div>Total:</div>
-                        <div className="price">${(Number((product.price).replace(/[^0-9.-]+/g, "")) - (Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent)).toFixed(2)}</div>
+                        <div className="price danger">-${(Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent).toFixed(2)}</div>
+                        <div id="discountinfo" title={product.reason}>?</div>
                       </div>
                     </span>
                     ) : (

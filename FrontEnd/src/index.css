@@ -227,8 +227,7 @@ li {
 
 #discountinfo {
   font-size: x-small;
-  margin-left: -60px;
-  margin-top: 8px;
+  margin-top: 1px;
   border-radius: 50%;
   border: .1rem #1e719e solid;
   width: 1.2rem;

@@ -62,8 +62,10 @@ function ProductDetails(props) {
                       <span>
                     <li>
                       <div className="row">
+                        <div>
                         <div>Discount: </div>
                         <div id="discountinfo" title={product.reason}>?</div>
+                        </div>
                         <div className="price danger">${(Number((product.price).replace(/[^0-9.-]+/g, "")) * product.discount_percent).toFixed(2)}</div>
                       </div>
                     </li>
