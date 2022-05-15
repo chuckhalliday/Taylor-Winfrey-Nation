@@ -54,7 +54,7 @@ const Home = ({ setAuth }) => {
                 </button>
             </div>
             <div className="brand">
-            <a id="title" href="/">The Official Taylor Winfrey Payment Experience!!!!!!</a>
+            <Link id="title" to="/home">The Official Taylor Winfrey Payment Experience!!!!!!</Link>
             </div>
             <div className="header-links">
                 <Link id="cart" to="/cart">Cart</Link>

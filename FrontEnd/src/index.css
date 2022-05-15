@@ -87,6 +87,11 @@ a:hover{
   color: #15ff00;
 }
 
+#showbox {
+  font-size: small;
+  margin-left: 5px;
+}
+
 .products{
   display: flex;
   justify-content: center;
@@ -165,7 +170,7 @@ a:hover{
   color: #20a020;
 }
 .danger {
-  color: #c02719
+  color: #ff1500
 }
 .alert{
   padding: 1rem;

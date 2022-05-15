@@ -52,20 +52,27 @@ const Login = ({ setAuth }) => {
               }
             }
           };
+          function showPassword() {
+            var x = document.getElementById("passwordinput");
+            if (x.type === "password") {
+              x.type = "text";
+            } else {
+              x.type = "password";
+            }
+          }
           
     return (
         <Fragment>
           <h1 className="text-center mt-5">Login</h1>
           <form className="mt-5" id="userinput" onSubmit={onSubmit}>
             <div className="form-group">
-              <span className="label">Username</span>
+              <span className="label">Username</span><span className="danger">{errorUsername}</span>
               <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
-              <span style={{ color: "red" }}>{errorUsername}</span><br />
             </div>
             <div className="form-group">
-              <span className="label">Password</span>  
-              <input type="text" className="form-control" value={password} onChange={e => setPassword(e.target.value)} />
-              <span style={{ color: "red" }}>{errorPassword}</span><br />
+              <span className="label">Password</span> <span className="danger">{errorPassword}</span> 
+              <input type="password" className="form-control" id="passwordinput" value={password} onChange={e => setPassword(e.target.value)} />
+              <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
             </div>
             <button className="btn btn-success mb-5">Login</button><br />
             <a href="/createUser">Register</a>

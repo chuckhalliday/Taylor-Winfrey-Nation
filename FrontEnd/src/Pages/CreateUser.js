@@ -70,35 +70,40 @@ const InputUser = () => {
       }
     };
 
+    function showPassword() {
+      var x = document.getElementById("passwordinput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+
 
   return (
     <Fragment>
       <h1 className="text-center mt-5">Create User</h1>
       <form className="mt-5" id="userinput" onSubmit={onSubmitForm}>
         <div className="form-group">
-          <span className="label">Username</span>
-          <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
-          <span style={{ color: "red" }}>{errorUsername}</span><br />
-        </div>
-        <div className="form-group">
-          <span className="label">Password</span>  
-          <input type="text" className="form-control" value={password} onChange={e => setPassword(e.target.value)} />
-          <span style={{ color: "red" }}>{errorPassword}</span><br />
-        </div>
-        <div className="form-group">
-          <span className="label">First Name</span>
+          <span className="label">First Name</span><span className="danger">{errorFirst_name}</span>
           <input type="text" className="form-control" value={first_name} onChange={e => setFirst_name(e.target.value)} />
-          <span style={{ color: "red" }}>{errorFirst_name}</span><br />
         </div>
         <div className="form-group">
-          <span className="label">Last Name</span>
+          <span className="label">Last Name</span><span className="danger">{errorLast_name}</span>
           <input type="text" className="form-control" value={last_name} onChange={e => setLast_name(e.target.value)} />
-          <span style={{ color: "red" }}>{errorLast_name}</span><br />
         </div>
         <div className="form-group">
-          <span className="label">Email</span>
+          <span className="label">Email</span><span className="danger">{errorEmail}</span>
           <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} />
-          <span style={{ color: "red" }}>{errorEmail}</span><br />
+        </div>
+        <div className="form-group">
+          <span className="label">Username</span><span className="danger">{errorUsername}</span>
+          <input type="text" className="form-control" value={username} onChange={e => setUsername(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <span className="label">Password</span><span className="danger">{errorPassword}</span>  
+          <input type="password" className="form-control" id="passwordinput" value={password} onChange={e => setPassword(e.target.value)} />
+          <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
         </div>
         <button className="btn btn-success mb-5">Add User</button><br/>
         <a href="/login">Login</a>
