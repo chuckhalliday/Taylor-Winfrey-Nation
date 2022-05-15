@@ -32,7 +32,7 @@ export default function CartScreen(props) {
     return (
         <div className="row top">
             <div className="col-2">
-                <h1>Cart</h1>
+            <h1>Cart</h1>
                 {cartItems.length === 0 ? (<MessageBox>
                     Cart is empty <Link to="/home">Return Home</Link>
                 </MessageBox>
@@ -78,17 +78,27 @@ export default function CartScreen(props) {
                     </ul>
                 )}
             </div>
-            <div className="col-1">
-                <div className="card card-body">
+            <div className="col-2">
+                <div className="card card-body" id="cartcard">
                     <ul>
                         <li>
-                            <h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
-                            {cartItems.reduce((a,c) => a + Number((c.price).replace(/[^0-9.-]+/g, "")) * c.qty, 0).toFixed(2)}</h2>
+                            <div className="row">
+                            <div><h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)}) items: </h2></div>
+                            <div><h2>${cartItems.reduce((a,c) => a + Number((c.price).replace(/[^0-9.-]+/g, "")) * c.qty, 0).toFixed(2)}</h2></div>
+                            </div>
                         </li>
                         <li>
-                            <h2 className="danger">-${cartItems.reduce((a,c) => a + (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent) * c.qty, 0).toFixed(2)}</h2>
+                            <div className="row danger">
+                                <div><h2>Discount:</h2></div>
+                            <div><h2>-${cartItems.reduce((a,c) => a + (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent) * c.qty, 0).toFixed(2)}</h2></div>
+                            </div>
                         </li>
-                            <h2>Total: $ {cartItems.reduce((a,c) => (a + (Number((c.price).replace(/[^0-9.-]+/g, "")) - (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent))) * c.qty, 0).toFixed(2)}</h2>
+                        <li>
+                            <div className="row">
+                            <div><h2>Total: </h2></div>
+                            <div><h2>${cartItems.reduce((a,c) => (a + (Number((c.price).replace(/[^0-9.-]+/g, "")) - (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent))) * c.qty, 0).toFixed(2)}</h2></div>
+                            </div>
+                        </li>
                         <li>
                             <button type="button" 
                             onClick={checkOutHandler} 

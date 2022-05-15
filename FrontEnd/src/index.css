@@ -255,8 +255,12 @@ li {
   align-self: flex-start;
 }
 
+#cartcard {
+  width: 300px;
+}
+
 #cartbutton {
-  width: 105%;
+  width: 100%;
 }
 
 .gold{
