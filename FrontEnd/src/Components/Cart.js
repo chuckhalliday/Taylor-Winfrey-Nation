@@ -82,8 +82,12 @@ export default function CartScreen(props) {
                 <div className="card card-body">
                     <ul>
                         <li>
-                            <h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : 
-                            {cartItems.reduce((a,c) => a + c.price * c.qty, 0)}</h2>
+                            <h2>Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+                            {cartItems.reduce((a,c) => a + Number((c.price).replace(/[^0-9.-]+/g, "")) * c.qty, 0).toFixed(2)}</h2>
+                        </li>
+                        <li>
+                            <div className="danger">-$ 
+                            {cartItems.reduce((a,c) => a + (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent) * c.qty, 0).toFixed(2)}</div>
                         </li>
                         <li>
                             <button type="button" 

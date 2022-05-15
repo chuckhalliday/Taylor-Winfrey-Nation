@@ -11,8 +11,8 @@ const Welcome = () => {
             src="https://3dthis.com/player.htm?h=OTE0NjUyNw" 
             width="514" 
             height="516" 
-            frameborder="0" 
-            allowfullscreen="">
+            frameBorder="0" 
+            allowFullScreen="">
         </iframe>
         </div>
         <div>
