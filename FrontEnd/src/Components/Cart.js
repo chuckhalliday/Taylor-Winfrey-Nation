@@ -39,7 +39,7 @@ export default function CartScreen(props) {
                 ) : (
                     <ul>
                         {cartItems.map((item) => (
-                            <li key={item.data}>
+                            <li key={item.id}>
                                 <div className="row">
                                     <div>
                                     <img
@@ -49,13 +49,13 @@ export default function CartScreen(props) {
                                     ></img>
                                     </div>
                                     <div className="min-30">
-                                        <Link to={`/product/${item.data}`}>{item.name}</Link>
+                                        <Link to={`/products/${item.id}`}>{item.name}</Link>
                                     </div>
                                     <div>
                                         <select value={item.qty}
                                         onChange={(e) =>
                                         dispatch(
-                                            addToCart(item.data,
+                                            addToCart(item.id,
                                             Number(e.target.value))
                                         )}
                                         > {
@@ -69,7 +69,7 @@ export default function CartScreen(props) {
                                     </div>
                                     <div>
                                         <button type="button"
-                                        onClick={() => removeFromCartHandler(item.data)}
+                                        onClick={() => removeFromCartHandler(item.id)}
                                         >Delete</button>
                                     </div>
                                 </div>
