@@ -13,7 +13,7 @@ const Singles = () => {
     useEffect(() => {
         dispatch(listSingles())
     }, [dispatch]);
-
+    
     return (
         <div>
             {loading ? (
@@ -26,7 +26,7 @@ const Singles = () => {
             products.map(product =>
                 <li key={product.category_id}>
                     <div className="product">
-                    <Link><img className="product-image" src={product.image} alt="album art" /></Link>
+                    <Link to={'/products/' + product.id}><img className="product-image" src={product.image} alt="album art" /></Link>
                     <div className="product-name">
                     <Link to={'/products/' + product.id}>{product.name}</Link>
                     </div>

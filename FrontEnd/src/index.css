@@ -221,6 +221,10 @@ li {
   margin-left: 120px;
 }
 
+.min-30 {
+  min-width: 30rem;
+}
+
 #productname {
   margin-left: 300px;
 }
@@ -261,6 +265,11 @@ li {
 
 .large {
   width: 200%;
+}
+
+.small {
+  max-width: 5rem;
+  width: 100%
 }
 
 .price {

@@ -57,7 +57,7 @@ const Home = ({ setAuth }) => {
             <a id="title" href="/">The Official Taylor Winfrey Payment Experience!!!!!!</a>
             </div>
             <div className="header-links">
-                <a id="cart" href="cart.html">Cart</a>
+                <Link id="cart" to="/cart">Cart</Link>
                 <button className="btn btn-success" onClick={e => logout(e)}>Logout</ button>
             </div>
         </header>
