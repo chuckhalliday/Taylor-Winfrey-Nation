@@ -34,7 +34,7 @@ export default function CartScreen(props) {
             <div className="col-2">
                 <h1>Cart</h1>
                 {cartItems.length === 0 ? (<MessageBox>
-                    Cart is empty <Link to="/">Return Home</Link>
+                    Cart is empty <Link to="/home">Return Home</Link>
                 </MessageBox>
                 ) : (
                     <ul>
@@ -86,13 +86,14 @@ export default function CartScreen(props) {
                             {cartItems.reduce((a,c) => a + Number((c.price).replace(/[^0-9.-]+/g, "")) * c.qty, 0).toFixed(2)}</h2>
                         </li>
                         <li>
-                            <div className="danger">-$ 
-                            {cartItems.reduce((a,c) => a + (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent) * c.qty, 0).toFixed(2)}</div>
+                            <h2 className="danger">-${cartItems.reduce((a,c) => a + (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent) * c.qty, 0).toFixed(2)}</h2>
                         </li>
+                            <h2>Total: $ {cartItems.reduce((a,c) => (a + (Number((c.price).replace(/[^0-9.-]+/g, "")) - (Number((c.price).replace(/[^0-9.-]+/g, "")) * c.discount_percent))) * c.qty, 0).toFixed(2)}</h2>
                         <li>
                             <button type="button" 
                             onClick={checkOutHandler} 
-                            className="primary block" 
+                            className="block gold"
+                            id="cartbutton" 
                             disabled={cartItems.length === 0}>
                                 Checkout
                             </button>
