@@ -59,13 +59,13 @@ body {
 }
 #tw{
   overflow: hidden;
-  height: 440px;
+  height: 450px;
   width: 440px;
 }
 #crop{
   position: relative;
-  height: 550px;
-  top: -145px;
+  height: 580px;
+  top: -144px;
   left: -25px;
   filter: invert(100%);
 }
@@ -87,7 +87,6 @@ a:hover{
   color: #15ff00;
 }
 
-/* Home Screen */
 .products{
   display: flex;
   justify-content: center;
