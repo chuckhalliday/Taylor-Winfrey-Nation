@@ -33,6 +33,7 @@ app.post('/products', pool.createProduct);
 app.put('/products/:id', pool.updateProduct);
 app.delete('/products/:id', pool.deleteProduct);
 
+app.get('/session/user/:user_id', pool.currentSession);
 app.post('/session', pool.createShopSession);
 app.put('/session/:id', pool.updateShopSession);
 

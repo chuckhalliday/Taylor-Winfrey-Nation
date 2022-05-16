@@ -142,6 +142,15 @@ const deleteProduct = (request, response) => {
 }
 
 // Shopping session
+const currentSession = (request, response) => {
+  const user_id = parseInt(request.params.user_id)
+  pool.query('SELECT * FROM shopping_session WHERE user_id = $1 ORDER BY id DESC LIMIT 1', [user_id], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).json(results.rows)
+  })
+}
 
 const createShopSession = (request, response) => {
   const { user_id } = request.body
@@ -205,6 +214,7 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  currentSession,
   createShopSession,
   updateShopSession,
   addCartItem,
