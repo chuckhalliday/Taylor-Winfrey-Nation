@@ -41,14 +41,14 @@ router.post("/login", validInfo, async (req, res) => {
         const user = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
 
         if (user.rows.length === 0) {
-            return res.status(401).send("Username or Password is incorrect")
+            return res.status(401).send({message: "Username or Password is incorrect"})
 
         };
 
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
         if (!validPassword) {
-            return res.status(401).json({msg: "Username or Password is incorrect"})
+            return res.status(401).send({message: "Username or Password is incorrect"})
         }
         
         const jwtToken = jwtGenerator(user.rows[0].id);
@@ -57,7 +57,7 @@ router.post("/login", validInfo, async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server Error")
+        res.status(500).send({ message: "Server Error" })
     }
 })
 
@@ -68,7 +68,7 @@ router.post("/verify", authorization, async (req, res) => {
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server Error");
+        res.status(500).send({ message: "Server Error" });
     }
 });
 

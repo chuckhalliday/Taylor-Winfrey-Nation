@@ -15,7 +15,19 @@ function ProductDetails(props) {
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
 
-    const addToCartHandler = () => {
+    const addToCartHandler = async(e) => {
+      e.preventDefault();
+      const body = {
+        product_id: productId,
+        quantity: qty
+      }
+      await fetch('http://localhost:5000/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
       props.history.push(`/cart/${productId}?qty=${qty}`);
     }
 

@@ -9,21 +9,34 @@ import CartScreen from "../Components/Cart";
 
 const Home = ({ setAuth }) => {
     const [name, setName] = useState("");
+    const [id, setId] = useState("");
 
     const getProfile = async () => {
       try {
         const res = await fetch("http://localhost:5000/dashboard/", {
           method: "POST",
           headers: { jwt_token: localStorage.token }
-        });
-  
+        })
         const parseData = await res.json();
         setName(parseData.first_name);
+        setId(parseData.id);
       } catch (err) {
         console.error(err.message);
       }
     };
 
+    const startSession = async () => {
+        const body = {
+            user_id: id
+        }
+        await fetch('http://localhost:5000/session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+            })
+    }
 
     const logout = (e) => {
         e.preventDefault();
@@ -32,9 +45,14 @@ const Home = ({ setAuth }) => {
     }
 
     useEffect(() => {
-        getProfile();
-      }, []);
+        getProfile()
+    })
     
+    useEffect(() => {
+        if (id !== "") {
+        startSession()
+        }
+    }, [id])
 
     const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");

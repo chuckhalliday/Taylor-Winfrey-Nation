@@ -141,6 +141,57 @@ const deleteProduct = (request, response) => {
   })
 }
 
+// Shopping session
+
+const createShopSession = (request, response) => {
+  const { user_id } = request.body
+  pool.query('INSERT INTO shopping_session (user_id) VALUES ($1)',
+  [user_id], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(201).send(`Shopping session started with ID: ${results.id}`)
+  })
+}
+const updateShopSession = (request, response) => {
+  const id = parseInt(request.params.id)
+  const { user_id, total } = request.body
+  pool.query( 'UPDATE shopping_session SET modified_at = NOW(), user_id = $1, total = $2 WHERE id = $3',
+  [user_id, total, id],
+  (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).send(`Shopping session modified with ID: ${id}`)
+  })
+}
+
+// Cart Items
+const addCartItem = (request, response) => {
+  const { session_id, product_id, quantity } = request.body
+  pool.query('INSERT INTO cart_items (session_id, product_id, quantity) VALUES ($1, $2, $3)',
+  [session_id, product_id, quantity], (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(201).send(`Cart item added with ID: ${results.id}`)
+  })
+}
+const updateCartItem = (request, response) => {
+  const id = parseInt(request.params.id)
+  const { session_id, product_id, quantity } = request.body
+  pool.query( 'UPDATE cart_items SET modified_at = NOW(), session_id = $1, product_id = $2, quantity = $3 WHERE id = $4',
+  [session_id, product_id, quantity, id],
+  (error, results) => {
+    if (error) {
+      throw error
+    }
+      response.status(200).send(`Cart item modified with ID: ${id}`)
+  })
+}
+
+
+
 module.exports = {
   pool,
   getUsers,
@@ -153,5 +204,9 @@ module.exports = {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  createShopSession,
+  updateShopSession,
+  addCartItem,
+  updateCartItem
 }

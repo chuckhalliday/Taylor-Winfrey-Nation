@@ -33,6 +33,12 @@ app.post('/products', pool.createProduct);
 app.put('/products/:id', pool.updateProduct);
 app.delete('/products/:id', pool.deleteProduct);
 
+app.post('/session', pool.createShopSession);
+app.put('/session/:id', pool.updateShopSession);
+
+app.post('/cart', pool.addCartItem);
+app.put('/cart/:id', pool.updateCartItem)
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })
