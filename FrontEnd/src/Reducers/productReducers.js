@@ -1,3 +1,4 @@
+import { CLEAR_SESSION } from "../Constants/cartConstants";
 import {PRODUCT_DETAILS_FAIL, 
         PRODUCT_DETAILS_REQUEST, 
         PRODUCT_DETAILS_SUCCESS, 
@@ -13,6 +14,8 @@ export const productListReducer = (state = {loading: true, products: []}, action
             return {loading: false, products: action.payload};
         case PRODUCT_LIST_FAIL:
             return {loading: false, error: action.payload}
+            case CLEAR_SESSION:
+                return {loading: false, products: []}
         default:
             return state;
     }
@@ -26,6 +29,8 @@ export const productDetailsReducer = (state = { product: [], loading: true }, ac
             return {loading: false, product: action.payload};
         case PRODUCT_DETAILS_FAIL:
             return {loading:false, error: action.payload};
+        case CLEAR_SESSION:
+            return {loading: false, products: []}
         default:
             return state;
     }

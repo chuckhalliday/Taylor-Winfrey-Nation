@@ -6,10 +6,14 @@ import Merch from '../Components/Merch'
 import Tour from '../Components/Tour'
 import ProductDetails from '../Components/ProductDetails'
 import CartScreen from "../Components/Cart";
+import { storeUserId } from "../Actions/userActions";
+import { useDispatch } from "react-redux";
+import { clearSession } from "../Actions/cartActions";
 
 const Home = ({ setAuth }) => {
     const [name, setName] = useState("");
     const [id, setId] = useState("");
+    const dispatch = useDispatch();
 
     const getProfile = async () => {
       try {
@@ -38,8 +42,15 @@ const Home = ({ setAuth }) => {
             })
     }
 
+    useEffect(() => {
+        if (id !== "") {
+        dispatch(storeUserId(id))
+        }
+    }, [dispatch, id])
+
     const logout = (e) => {
         e.preventDefault();
+        dispatch(clearSession());
         localStorage.removeItem("token");
         setAuth(false);
     }

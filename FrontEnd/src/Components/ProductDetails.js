@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsProduct } from '../Actions/productActions';
+import { findSession } from '../Actions/userActions';
 import LoadingBox from './LoadingBox';
 import MessageBox from './MessageBox';
 
@@ -10,6 +11,14 @@ function ProductDetails(props) {
     const [qty, setQty] = useState(1);
     const productDetails = useSelector(state => state.productDetails);
     const { loading, error, product } = productDetails;
+    const user_id = useSelector(state => state.currentUser.user.id)
+    const session_id = useSelector(state => state.currentSession.session.id)
+
+    useEffect(() => {
+      if (user_id !== '') {
+      dispatch(findSession(user_id))
+      }
+  }, [dispatch, user_id])
 
     useEffect(() => {
         dispatch(detailsProduct(productId));
@@ -19,6 +28,7 @@ function ProductDetails(props) {
       e.preventDefault();
       const body = {
         product_id: productId,
+        session_id: session_id,
         quantity: qty
       }
       await fetch('http://localhost:5000/cart', {

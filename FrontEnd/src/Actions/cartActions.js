@@ -1,7 +1,7 @@
 import Axios from "axios"
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../Constants/cartConstants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CLEAR_SESSION } from "../Constants/cartConstants";
 
-export const addToCart = (productId, qty) => async (dispatch, getState) => {
+export const addToCart = (productId, qty) => async (dispatch) => {
     const {data} = await Axios.get(`http://localhost:5000/products/${productId}`);
     const product = await data.filter(obj => obj.id === productId)[0]
         
@@ -19,10 +19,13 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
             qty,
         }
     });
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 }
 
-export const removeFromCart = (productId) => (dispatch, getState) => {
-    dispatch({type: CART_REMOVE_ITEM, payload: productId});
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+export const removeFromCart = (productId) => (dispatch) => {
+    dispatch({type: CART_REMOVE_ITEM, payload: productId});;
+}
+
+
+export const clearSession = () => {
+    return {type: CLEAR_SESSION}
 }

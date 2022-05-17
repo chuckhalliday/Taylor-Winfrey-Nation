@@ -1,5 +1,4 @@
 import React, { Fragment, useState} from "react";
-
 import { toast } from "react-toastify"
 
 const Login = ({ setAuth }) => {
