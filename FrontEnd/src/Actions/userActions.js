@@ -28,7 +28,7 @@ export const findSession = (user_id) => async (dispatch) => {
     .then((response) => {
       console.log(response.data[0]);
       console.log(response.status)
-      
+
       dispatch({
         type: SESSION_INFO_SUCCESS,
         payload: {

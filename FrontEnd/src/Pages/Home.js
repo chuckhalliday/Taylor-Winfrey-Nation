@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Welcome from '../Components/Welcome'
 import Singles from '../Components/Singles'
@@ -6,8 +7,8 @@ import Merch from '../Components/Merch'
 import Tour from '../Components/Tour'
 import ProductDetails from '../Components/ProductDetails'
 import CartScreen from "../Components/Cart";
+import Shipping from "../Components/Shipping";
 import { storeUserId } from "../Actions/userActions";
-import { useDispatch } from "react-redux";
 import { clearSession } from "../Actions/cartActions";
 
 const Home = ({ setAuth }) => {
@@ -16,18 +17,18 @@ const Home = ({ setAuth }) => {
     const dispatch = useDispatch();
 
     const getProfile = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/dashboard/", {
-          method: "POST",
-          headers: { jwt_token: localStorage.token }
-        })
-        const parseData = await res.json();
-        setName(parseData.first_name);
-        setId(parseData.id);
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
+        try {
+          const res = await fetch("http://localhost:5000/dashboard/", {
+            method: "POST",
+            headers: { jwt_token: localStorage.token }
+          })
+          const parseData = await res.json();
+          setName(parseData.first_name);
+          setId(parseData.id);
+        } catch (err) {
+          console.error(err.message);
+        }
+      };
 
     const startSession = async () => {
         const body = {
@@ -42,18 +43,27 @@ const Home = ({ setAuth }) => {
             })
     }
 
-    useEffect(() => {
-        if (id !== "") {
-        dispatch(storeUserId(id))
-        }
-    }, [dispatch, id])
-
     const logout = (e) => {
         e.preventDefault();
         dispatch(clearSession());
         localStorage.removeItem("token");
         setAuth(false);
     }
+
+    const openMenu = () => {
+        document.querySelector(".sidebar").classList.add("open");
+        }
+    
+        const closeMenu = () => {
+            document.querySelector(".sidebar").classList.remove("open");
+        }
+
+
+    useEffect(() => {
+        if (id !== "") {
+        dispatch(storeUserId(id))
+        }
+    }, [dispatch, id])
 
     useEffect(() => {
         getProfile()
@@ -63,15 +73,7 @@ const Home = ({ setAuth }) => {
         if (id !== "") {
         startSession()
         }
-    }, [id])
-
-    const openMenu = () => {
-    document.querySelector(".sidebar").classList.add("open");
-    }
-
-    const closeMenu = () => {
-        document.querySelector(".sidebar").classList.remove("open");
-    }
+    })
 
     return (
             <Router>
@@ -114,6 +116,7 @@ const Home = ({ setAuth }) => {
             <Route path="/merch" exact={true} component={Merch} />
             <Route path="/tour" exact={true} component={Tour} />
             <Route path="/cart/:id?"  component={CartScreen}/>
+            <Route path="/shipping" component={Shipping}/>
             </div>
         </main>
         <footer className="footer">
