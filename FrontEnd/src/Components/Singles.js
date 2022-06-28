@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import MessageBox from "./MessageBox";
 import LoadingBox from "./LoadingBox";
+import AudioPlayer from "./AudioPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import { listSingles } from "../Actions/productActions";
 import { Link } from "react-router-dom";
+
 
 const Singles = () => {
     const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const Singles = () => {
                 <li key={product.category_id}>
                     <div className="product">
                     <Link to={'/products/' + product.id}><img className="product-image" src={product.image} alt="album art" /></Link>
+                    <AudioPlayer song={product.audio}/>
                     <div className="product-name">
                     <Link to={'/products/' + product.id}>{product.name}</Link>
                     </div>

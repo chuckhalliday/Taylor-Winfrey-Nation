@@ -85,7 +85,7 @@ const getProducts = (request, response) => {
 
 const getProductByCategory = (request, response) => {
   const category_id = parseInt(request.params.category_id)
-  pool.query('SELECT product.id AS id, name, description, price, image, discount_percent, reason FROM product LEFT JOIN discount ON (product.discount_id = discount.id) WHERE category_id = $1 ORDER BY product.id ASC', 
+  pool.query('SELECT product.id AS id, name, description, price, image, audio, discount_percent, reason FROM product LEFT JOIN discount ON (product.discount_id = discount.id) WHERE category_id = $1 ORDER BY product.id ASC', 
   [category_id], (error, results) => {
     if (error) {
       throw error
