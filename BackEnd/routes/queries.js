@@ -1,12 +1,20 @@
 const req = require('express/lib/request')
 
 const Pool = require('pg').Pool
-const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  username: 'charlesclark',
-  database: 'ecommerce',
-})
+require("dotenv").config();
+
+const devConfig = {
+  host: process.env.PG_HOST,
+  port: process.env.PG_PORT,
+  database: process.env.PG_DATABASE,
+  username: process.env.PG_USERNAME
+}
+
+const proConfig = {
+  connectionString: process.env.DATABASE_URL
+}
+
+const pool = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig)
 
 
 //User commands:

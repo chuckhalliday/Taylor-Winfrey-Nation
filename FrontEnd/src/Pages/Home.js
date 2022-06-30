@@ -18,7 +18,7 @@ const Home = ({ setAuth }) => {
 
     const getProfile = async () => {
         try {
-          const res = await fetch("http://localhost:5000/dashboard/", {
+          const res = await fetch("/dashboard/", {
             method: "POST",
             headers: { jwt_token: localStorage.token }
           })
@@ -34,7 +34,7 @@ const Home = ({ setAuth }) => {
         const body = {
             user_id: id
         }
-        await fetch('http://localhost:5000/session', {
+        await fetch('/session', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

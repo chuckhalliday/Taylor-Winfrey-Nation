@@ -1,23 +1,27 @@
 {
-  "name": "ecommerceproject",
+  "name": "taylorwinfrey",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "17.9.0",
+    "npm": "8.5.5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "cd backend && node server.js",
+    "heroku-postbuild": "cd ../frontend && npm intall && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chuckhalliday/firstecommproject.git"
+    "url": "git+https://github.com/chuckhalliday/taylorwinfrey.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chuckhalliday/firstecommproject/issues"
+    "url": "https://github.com/chuckhalliday/taylorwinfrey/issues"
   },
-  "homepage": "https://github.com/chuckhalliday/firstecommproject#readme",
+  "homepage": "https://github.com/chuckhalliday/taylorwinfrey#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

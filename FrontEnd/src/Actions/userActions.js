@@ -8,7 +8,7 @@ import {
 
 export const storeUserId = (id) => async (dispatch) => {
   try {
-    const { data } = await Axios.get(`http://localhost:5000/users/${id}`);
+    const { data } = await Axios.get(`/users/${id}`);
     const user = await data.filter((obj) => obj.id === id)[0];
     dispatch({
       type: USER_INFO_SUCCESS,
@@ -23,7 +23,7 @@ export const storeUserId = (id) => async (dispatch) => {
 
 export const findSession = (user_id) => async (dispatch) => {
   const { data } = await Axios.get(
-    `http://localhost:5000/session/user/${user_id}`
+    `/session/user/${user_id}`
   )
     .then((response) => {
       console.log(response.data[0]);

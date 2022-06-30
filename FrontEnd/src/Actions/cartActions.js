@@ -2,7 +2,7 @@ import Axios from "axios"
 import { CART_ADD_ITEM, CART_REMOVE_ITEM, CLEAR_SESSION } from "../Constants/cartConstants";
 
 export const addToCart = (productId, qty) => async (dispatch) => {
-    const {data} = await Axios.get(`http://localhost:5000/products/${productId}`);
+    const {data} = await Axios.get(`/products/${productId}`);
     const product = await data.filter(obj => obj.id === productId)[0]
         
     dispatch({

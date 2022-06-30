@@ -31,7 +31,7 @@ function ProductDetails(props) {
         session_id: session_id,
         quantity: qty
       }
-      await fetch('http://localhost:5000/cart', {
+      await fetch('/cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
