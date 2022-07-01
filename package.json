@@ -8,8 +8,8 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "cd backend && node server.js",
-    "heroku-postbuild": "cd ../frontend && npm install && npm run build"
+    "start": "concurrently \"cd backend && node server.js\" \"cd frontend && npm start\"",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/chuckhalliday/taylorwinfrey#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "concurrently": "^7.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
