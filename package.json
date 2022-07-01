@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node server.js",
     "devStart": "nodemon server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "install-client": "npm install --prefix frontend",
+    "heroku-postbuild": "install-client && npm run build"
   },
   "repository": {
     "type": "git",
