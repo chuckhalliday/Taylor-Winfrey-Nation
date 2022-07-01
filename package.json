@@ -8,8 +8,7 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "concurrently \"cd backend && node server.js\" \"cd frontend && npm start\"",
-    "heroku-postbuild": "npm run build"
+    "start": "concurrently \"cd backend && node server.js\" \"cd frontend && npm install && npm build\""
   },
   "repository": {
     "type": "git",
