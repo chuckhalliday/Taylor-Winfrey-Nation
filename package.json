@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "cd backend && node server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd ../frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
