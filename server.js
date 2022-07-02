@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
-const path = require("path");
+const path = require('path');
+const publicPath = path.join(__dirname, '..', 'public')
 const pool = require('./routes/queries');
 
 app.use(cors());
@@ -12,6 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true,})
 );
+
+app.use(express.static(publicPath));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "frontend/build")));
