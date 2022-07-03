@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/fa725210-fcdd-48c6-9e45-0b837f30c935/microsoft.web/sites/subscriptions/fa725210-fcdd-48c6-9e45-0b837f30c935/resourceGroups/TW/providers/Microsoft.Web/sites/taylorwinfrey",
+    "appService.deploySubpath": "."
+}
