@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.js",
-    "heroku-postbuild": "cd FrontEnd && npm install && npm run build"
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
