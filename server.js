@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '/FrontEnd/build')));
+} else {
+  app.use(express.static(publicPath));
 }
 
 //register and login routes
