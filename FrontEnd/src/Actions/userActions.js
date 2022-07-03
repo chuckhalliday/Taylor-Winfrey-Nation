@@ -22,12 +22,10 @@ export const storeUserId = (id) => async (dispatch) => {
 };
 
 export const findSession = (user_id) => async (dispatch) => {
-  const { data } = await Axios.get(
-    `/session/user/${user_id}`
-  )
+  await Axios.get(`/session/user/${user_id}`)
     .then((response) => {
       console.log(response.data[0]);
-      console.log(response.status)
+      console.log(response.status);
 
       dispatch({
         type: SESSION_INFO_SUCCESS,
