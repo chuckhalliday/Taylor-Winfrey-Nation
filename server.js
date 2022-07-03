@@ -4,7 +4,6 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 const path = require('path');
-const publicPath = path.join(__dirname, '/FrontEnd/public')
 const pool = require('./routes/queries');
 
 app.use(cors());
@@ -14,11 +13,7 @@ app.use(bodyParser.urlencoded({
     extended: true,})
 );
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, '/FrontEnd/build')));
-} else {
-  app.use(express.static(publicPath));
-}
+app.use(express.static(path.join(__dirname, '/FrontEnd/build')));
 
 //register and login routes
 
