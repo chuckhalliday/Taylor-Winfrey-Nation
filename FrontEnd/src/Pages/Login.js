@@ -1,6 +1,7 @@
 import React, { Fragment, useState} from "react";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import InputUser from "./CreateUser";
 
 const Login = ({ setAuth }) => {
     const [username, setUsername] = useState("");
@@ -64,6 +65,8 @@ const Login = ({ setAuth }) => {
           
     return (
         <Fragment>
+          <Router>
+          <Route path="/login" exact={true}>
           <h1 className="text-center mt-5">Login</h1>
           <form className="mt-5" id="userinput" onSubmit={onSubmit}>
             <div className="form-group">
@@ -78,6 +81,9 @@ const Login = ({ setAuth }) => {
             <button className="btn btn-success mb-5">Login</button><br />
             <Link to="/createUser">Register</Link>
           </form>
+          </Route>
+          <Route path="/createuser" exact={true} component={InputUser} />
+          </Router>
         </Fragment>
       );    
 }

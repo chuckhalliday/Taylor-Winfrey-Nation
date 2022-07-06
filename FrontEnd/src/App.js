@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 //components
 
-import InputUser from "./Pages/CreateUser";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 
@@ -41,7 +40,6 @@ function App() {
         <div>
           <Switch>
             <Route exact path="/login" render={props => !isAuthenticated ? (<Login {...props} setAuth={setAuth}/>) : (<Redirect to="/home" />)} />
-            <Route exact path="/createuser" component={InputUser} />
             <Route exact path="/home" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
             <Route exact path="/" render={props => isAuthenticated ? (<Home {...props} setAuth={setAuth} />) : (<Redirect to="/login"/>)} />
           </Switch>
