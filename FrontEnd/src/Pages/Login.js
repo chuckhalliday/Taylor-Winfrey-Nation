@@ -1,5 +1,6 @@
 import React, { Fragment, useState} from "react";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Login = ({ setAuth }) => {
     const [username, setUsername] = useState("");
@@ -75,9 +76,8 @@ const Login = ({ setAuth }) => {
               <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
             </div>
             <button className="btn btn-success mb-5">Login</button><br />
-            <a href="/createUser">Register</a>
+            <Link to="/createUser">Register</Link>
           </form>
-
         </Fragment>
       );    
 }
