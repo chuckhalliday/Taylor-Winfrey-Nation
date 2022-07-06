@@ -79,7 +79,7 @@ const Login = ({ setAuth }) => {
               <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
             </div>
             <button className="btn btn-success mb-5">Login</button><br />
-            <Link to="/createUser">Register</Link>
+            <Link to="/createuser">Register</Link>
           </form>
           </Route>
           <Route path="/createuser" exact={true} component={InputUser} />
