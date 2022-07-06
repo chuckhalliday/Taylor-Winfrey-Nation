@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 const InputUser = () => {
   const [username, setUsername] = useState("");
@@ -106,10 +107,8 @@ const InputUser = () => {
           <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
         </div>
         <button className="btn btn-success mb-5">Add User</button><br/>
-        <a href="/login">Login</a>
+        <Link to="/login">Login</Link>
       </form>
-
-
     </Fragment>
   );
 }
