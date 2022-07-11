@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server.js",
     "devStart": "nodemon server.js",
-    "build-prod": "cd FrontEnd && npm install && npm run build"
+    "build-prod": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",

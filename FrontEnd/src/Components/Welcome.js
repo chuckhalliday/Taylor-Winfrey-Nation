@@ -9,9 +9,9 @@ const Welcome = () => {
         <iframe
             id="crop"
             title="tayoh" 
-            src="https://3dthis.com/player.htm?h=OTE0NjUyNw" 
-            width="514" 
-            height="516" 
+            src="https://3dthis.com/player.htm?h=OTE0NjUyNw"
+            position="absolute"
+            width="115%"
             frameBorder="0" 
             allowFullScreen="">
         </iframe>

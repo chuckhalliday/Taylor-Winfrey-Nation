@@ -85,10 +85,9 @@ const Home = ({ setAuth }) => {
                 </button>
             </div>
             <div className="brand">
-            <Link id="title" to="/home">The Official Taylor Winfrey Payment Experience!!!!!!</Link>
+            <Link id="title" to="/home">Taylor Winfrey</Link>
             </div>
             <div className="header-links">
-                <Link id="cart" to="/cart">Cart</Link>
                 <button className="btn btn-success" onClick={e => logout(e)}>Logout</ button>
             </div>
         </header>
@@ -104,6 +103,9 @@ const Home = ({ setAuth }) => {
                 </li>
                 <li>
                     <Link to="/tour">Tickets</Link>
+                </li>
+                <li>
+                    <Link to="/cart">Cart</Link>
                 </li>
             </ul>
         </aside>
