@@ -96,16 +96,16 @@ const Home = ({ setAuth }) => {
             <button className="sidebar-close-button" onClick={closeMenu}>x</button>
             <ul>
                 <li>
-                    <Link to="/singles">Singles</Link> 
+                    <Link to="/singles" onClick={closeMenu}>Singles</Link> 
                 </li>
                 <li>
-                    <Link to="/merch">Merch</Link>
+                    <Link to="/merch" onClick={closeMenu}>Merch</Link>
                 </li>
                 <li>
-                    <Link to="/tour">Tickets</Link>
+                    <Link to="/tour" onClick={closeMenu}>Tickets</Link>
                 </li>
                 <li>
-                    <Link to="/cart">Cart</Link>
+                    <Link to="/cart" onClick={closeMenu}>Cart</Link>
                 </li>
             </ul>
         </aside>

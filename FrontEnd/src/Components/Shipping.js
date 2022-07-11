@@ -6,7 +6,7 @@ const Shipping = () => {
   return (
     <center>
         <div>
-          <h2>Have you thought this through?</h2>
+          <h2 id="shipping">Have you really thought this through?</h2>
         </div>
     </center>
   )
