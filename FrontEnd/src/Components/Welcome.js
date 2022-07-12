@@ -1,10 +1,11 @@
 import React from "react";
 
 
-const Welcome = () => {
+const Welcome = (props) => {
 
   return (
     <center>
+      <div className="welcome"><h2>You belong to us now, {props.name}</h2></div>
       <div id="tw">
         <iframe
             id="crop"

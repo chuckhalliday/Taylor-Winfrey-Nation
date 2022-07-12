@@ -56,6 +56,13 @@ body {
   grid-area: main;
   flex: 1;
 }
+.compTitle{
+  color: #9b1da2;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 #tw{
   overflow: hidden;
   height: 450px;
@@ -142,7 +149,7 @@ a:hover{
   transform: translateX(-40rem);
   width: 12rem;
   background-color: #fbc8f6;
-  height: 160px;
+  height: 190px;
   text-align: center;
   padding-top: 10px;
   z-index: 999;
@@ -283,6 +290,9 @@ li {
 .price {
   font-size: 2rem;
 }
+#quotes{
+  width: 60%;
+}
 
 #shipping {
   margin-top: 50px;
@@ -295,7 +305,7 @@ li {
   }
   #tw{
     width: 100%;
-    height: 325px;
+    height: 340px;
   }
   .brand {
     font-size: 12;

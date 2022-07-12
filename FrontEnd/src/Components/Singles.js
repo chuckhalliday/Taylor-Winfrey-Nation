@@ -18,6 +18,8 @@ const Singles = () => {
     
     return (
         <div>
+            <center><h1 className="compTitle">Top of the Charts</h1></center>
+        <div>
             {loading ? (
                 <LoadingBox></LoadingBox>
               )  : error ? (
@@ -49,6 +51,7 @@ const Singles = () => {
                 </li>)
             }
         </ul>)}
+        </div>
         </div>
     );
 };

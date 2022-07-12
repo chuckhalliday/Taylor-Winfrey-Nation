@@ -17,6 +17,8 @@ const Merch = () => {
 
     return (
         <div>
+            <center><h1 className="compTitle">Offical TW Uniforms</h1></center>
+        <div>
         {loading ? (
             <LoadingBox></LoadingBox>
           )  : error ? (
@@ -47,6 +49,7 @@ const Merch = () => {
                 </li>)
             }
         </ul>)}
+        </div>
         </div>
     );
 };

@@ -43,6 +43,8 @@ function ProductDetails(props) {
 
 
     return (
+      <div>
+            <center><h1 className="compTitle">Yes, Look Closer</h1></center>
         <div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -140,6 +142,7 @@ function ProductDetails(props) {
             </div>)}
          </div>
         )}
+    </div>
     </div>
     )
   }

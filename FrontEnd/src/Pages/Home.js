@@ -8,6 +8,7 @@ import Tour from '../Components/Tour'
 import ProductDetails from '../Components/ProductDetails'
 import CartScreen from "../Components/Cart";
 import Shipping from "../Components/Shipping";
+import Testimonials from "../Components/Testimonials";
 import { storeUserId } from "../Actions/userActions";
 import { clearSession } from "../Actions/cartActions";
 
@@ -105,20 +106,23 @@ const Home = ({ setAuth }) => {
                     <Link to="/tour" onClick={closeMenu}>Tickets</Link>
                 </li>
                 <li>
+                    <Link to="/testimonials" onClick={closeMenu}>Testimonials</Link>
+                </li>
+                <li>
                     <Link to="/cart" onClick={closeMenu}>Cart</Link>
                 </li>
             </ul>
         </aside>
         <main className="main">
-        <div className="welcome"><h2>You belong to us now, {name}</h2></div>
         <div className="content">
-            <Route path="/home" exact={true} component={Welcome} />
+            <Route path="/home" exact={true} component={props=> <Welcome name={name}/>} />
             <Route path="/products/:id" component={ProductDetails} />
             <Route path="/singles" exact={true} component={Singles} />
             <Route path="/merch" exact={true} component={Merch} />
             <Route path="/tour" exact={true} component={Tour} />
             <Route path="/cart/:id?"  component={CartScreen}/>
             <Route path="/shipping" component={Shipping}/>
+            <Route path="/testimonials" component={Testimonials}/>
             </div>
         </main>
         <footer className="footer">

@@ -17,6 +17,8 @@ const Tour = () => {
 
     return (
         <div>
+            <center><h1 className="compTitle">Future Gatherings</h1></center>
+        <div>
         {loading ? (
             <LoadingBox></LoadingBox>
           )  : error ? (
@@ -47,6 +49,7 @@ const Tour = () => {
                 </li>)
             }
         </ul>)}
+        </div>
         </div>
     );
 };
