@@ -6,7 +6,7 @@ const Testimonials = () => {
   return (
     <center>
         <div>
-          <h1 className="compTitle">Actual Rave Reviews (From Real People)</h1>
+          <h1 className="compTitle">Actual Rave Reviews <br/>(From Real People)</h1>
         </div>
         <div>
             <ul id="quotes">
