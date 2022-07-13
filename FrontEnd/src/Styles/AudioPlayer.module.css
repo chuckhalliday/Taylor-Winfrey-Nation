@@ -37,6 +37,7 @@
   .play {
     position: relative;
     left: 2px;
+    z-index: 99;
   }
   
   .currentTime,
@@ -57,14 +58,15 @@
     --selectedKnobby: #26c9c3;
   
     appearance: none;
-    background: var(--bar-bg);;
+    background: #9b1da2;
     border-radius: 10px;
     position: relative;
     width: 100%;
     height: 11px;
     outline: none;
   }
-  
+
+    
   /* progress bar - safari */
   .progressBar::-webkit-slider-runnable-track {
     background: var(--bar-bg);;
