@@ -67,7 +67,7 @@ const Login = ({ setAuth }) => {
         <Fragment>
           <Router>
           <Route path="/login" exact={true}>
-          <h1 className="text-center mt-5">Login</h1>
+          <h1 className="text-center mt-5">The Official <br className="d-md-none"/> <span id="loginTW">TAYLOR WINFREY</span> <br className="d-md-none"/>Entry Portal</h1>
           <form className="mt-5" id="userinput" onSubmit={onSubmit}>
             <div className="form-group">
               <span className="label">Username</span><span className="danger">{errorUsername}</span>
@@ -79,7 +79,7 @@ const Login = ({ setAuth }) => {
               <input type="checkbox" onClick={showPassword}/><span id="showbox">Show Password</span>
             </div>
             <button className="btn btn-success mb-5">Login</button><br />
-            <Link to="/createuser">Register</Link>
+            <Link to="/createuser">Quick Register</Link>
           </form>
           </Route>
           <Route path="/createuser" exact={true} component={InputUser} />
