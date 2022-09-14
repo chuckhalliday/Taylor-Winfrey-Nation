@@ -69,9 +69,10 @@ body {
   margin-bottom: 15px;
 }
 #tw{
-  overflow: hidden;
-  height: 450px;
-  width: 440px;
+  max-width: 500px;
+  max-height: auto;
+  object-fit: contain;
+  width: 100%;
 }
 #crop{
   position: relative;
@@ -310,7 +311,7 @@ li {
   }
   #tw{
     max-width: 100%;
-    height: 340px;
+    height: 350px;
   }
   .brand {
     font-size: 12;

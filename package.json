@@ -8,9 +8,9 @@
     "npm": "8.5.5"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "npm install && node server.js",
     "devStart": "nodemon server.js",
-    "build-prod": "cd FrontEnd && npm install && npm run build"
+    "heroku-postbuild": "cd FrontEnd && npm install && npm run build"
   },
   "repository": {
     "type": "git",
