@@ -7,7 +7,7 @@ const Welcome = (props) => {
     <center>
       <div className="welcome"><h2>You belong to us now, {props.name}</h2></div>
       <div id="tw">
-        <img src={require('../../src/TW.gif')} />
+        <img src={require('../../src/TW.gif')} alt="Taylor Winfrey"/>
         </div>
         <div>
           <h2>"Hater's gonna hate hate hate hate hate hate...</h2>
